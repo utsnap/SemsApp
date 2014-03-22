@@ -15,95 +15,8 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="406f3288-2735-4579-8ef9-fde5e1c6bc07" name="Default" comment="here is first versionn">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/pager_adapter/AbsDataPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/AbsFunctionDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/AbsViewPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/AppSettingActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/example/SemsApp/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/CarbonData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/CarbonFunctionDialogFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/pager_adapter/CarbonPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/CarbonPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/CarbonStateFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/lab/DataLab.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/tokenizer/DataTokenizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/LedData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/LedFunctionDialogFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/pager_adapter/LedPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/LedPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/LedStateFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MachineSettingActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/MachineStateFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/example/SemsApp/Manifest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/NewSemsData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/NewSemsFunctionDialogFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/pager_adapter/NewSemsPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/NewSemsPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/NewSemsStateFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/OldSemsData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/OldSemsFunctionDialogFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/pager_adapter/OldSemsPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/OldSemsPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/OldSemsStateFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/PasswordConfirmDialogFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/preference/PreferenceKeys.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/example/SemsApp/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SemsApp.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplicationn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/SettingActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/SettingFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/SingleFragmentActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/receiver/SmsReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/tab/TabHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/ViewPagerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ant.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/app_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/carbon_function_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/carbon_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/carbon_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/carbon_state_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_gson_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/ids.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/led_function_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/led_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/led_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/led_state_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/main_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/new_sems_function_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/new_sems_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/new_sems_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/new_sems_state_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/old_sems_function_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/old_sems_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/old_sems_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/old_sems_state_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/proguard-project.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/single_fragment_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/viewpager_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="406f3288-2735-4579-8ef9-fde5e1c6bc07" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SemsApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1043,6 +956,11 @@
       <created>1395282876073</created>
       <updated>1395282876073</updated>
     </task>
+    <task id="LOCAL-00001" summary="here is first versionn">
+      <created>1395471714117</created>
+      <updated>1395471714117</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1067,7 +985,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19215938" sideWeight="0.499316" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19215938" sideWeight="0.499316" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29041097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
