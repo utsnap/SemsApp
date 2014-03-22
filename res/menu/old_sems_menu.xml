@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--구버전 샘스의 설정과 기능을 나타내는 메뉴-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/oldSemsSettingMenuItem"
+	      android:title="Old Sems 설정"
+	      android:showAsAction="ifRoom|withText"/>
+	<item android:id="@+id/oldSemsFunctionMenuItem"
+	      android:title="Old Sems 기능"
+	      android:showAsAction="never"/>
+</menu>

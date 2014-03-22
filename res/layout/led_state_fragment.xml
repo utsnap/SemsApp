@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--LED조광기의 현재 상태를 보여준다. 프래그먼트에서 사용-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+</LinearLayout>

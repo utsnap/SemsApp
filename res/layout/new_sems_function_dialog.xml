@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--신버전 샘스의 기능을 보여준다. 다이얼로그에서 사용.-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+</LinearLayout>

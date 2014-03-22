@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SemsApp</string>
+	<string name="app_setting">앱설정하기</string>
+	<string name="machine_setting_password">machine_setting_password</string>
+	<string name="new_sems">New\nSems</string>
+	<string name="old_sems">Old\nSems</string>
+	<string name="led_dimmer">LED\nDimmer</string>
+	<string name="carbon_machine">Carbon\nMachine</string>
+</resources>

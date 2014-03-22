@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--앱의 기본적인 정보를 저장-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="각 기계의 사용여부와 전화번호를 설정하세요">
+	    <EditTextPreference android:key="@string/machine_setting_password"
+	                        android:title="기계 설정시 비밀번호"
+	                        android:inputType="numberPassword"
+	                        android:maxLength="8"
+	                        android:defaultValue=""/>
+
+		<PreferenceScreen
+			android:key="screen_preference"
+			android:title="수신 전화번호 설정"
+			android:summary="비상시에 연락받을 전화번호를 등록">
+
+			<EditTextPreference android:key="first_phone_number"
+			                    android:title="첫번째 번호"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="second_phone_number"
+			                    android:title="두번째 번호"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="third_phone_number"
+			                    android:title="세번째 번호"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+        </PreferenceScreen>
+
+        <CheckBoxPreference android:key="old_sems_used"
+                            android:title="구버전 Sems 사용여부"
+                            android:defaultValue="false"/>
+
+	    <EditTextPreference android:key="old_sems_phone_number"
+	                        android:dependency="old_sems_used"
+	                        android:layout="?android:attr/preferenceLayoutChild"
+	                        android:title="구버전 Sems의 전화번호"
+	                        android:phoneNumber="true"
+	                        android:inputType="phone"
+	                        android:defaultValue=""/>
+
+	    <CheckBoxPreference android:key="new_sems_used"
+	                        android:title="신버전 Sems 사용여부"
+	                        android:defaultValue="false"/>
+
+	    <EditTextPreference android:key="new_sems_phone_number"
+	                        android:dependency="new_sems_used"
+	                        android:layout="?android:attr/preferenceLayoutChild"
+	                        android:title="신버전 Sems의 전화번호"
+	                        android:phoneNumber="true"
+	                        android:inputType="phone"
+	                        android:defaultValue=""/>
+
+		<CheckBoxPreference android:key="led_dimmer_used"
+		                    android:title="LED 조광기 사용여부"
+		                    android:defaultValue="false"/>
+
+	    <EditTextPreference android:key="led_dimmer_phone_number"
+	                        android:dependency="led_dimmer_used"
+	                        android:layout="?android:attr/preferenceLayoutChild"
+	                        android:title="LED 조광기의 전화번호"
+	                        android:phoneNumber="true"
+	                        android:inputType="phone"
+	                        android:defaultValue=""/>
+
+	    <CheckBoxPreference android:key="carbon_machine_used"
+	                        android:title="탄소봉 기게 사용여부"
+	                        android:defaultValue="false"/>
+
+	    <EditTextPreference android:key="carbon_machine_phone_number"
+	                        android:dependency="carbon_machine_used"
+	                        android:layout="?android:attr/preferenceLayoutChild"
+	                        android:title="탄소봉 기계의 전화번호"
+	                        android:phoneNumber="true"
+	                        android:inputType="phone"
+	                        android:defaultValue=""/>
+    </PreferenceCategory>
+</PreferenceScreen>

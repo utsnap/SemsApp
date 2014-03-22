@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--별도로 관리되는 아이디.-->
+<resources>
+	<item type="id" name="newSemsViewPager"/>
+	<item type="id" name="oldSemsViewPager"/>
+	<item type="id" name="ledViewPager"/>
+	<item type="id" name="carbonViewPager"/>
+</resources>
