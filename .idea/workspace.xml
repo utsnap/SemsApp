@@ -25,81 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="406f3288-2735-4579-8ef9-fde5e1c6bc07" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/pager_adapter/AbsDataPagerAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/AbsFunctionDialog.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_setting/AbsMachineSettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/AbsViewPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/AppSettingActivity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/BuildConfig.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/CarbonData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/CarbonFunctionDialogFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/pager_adapter/CarbonPagerAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/CarbonPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_setting/CarbonSettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_state/CarbonStateFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/lab/DataLab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/tokenizer/DataTokenizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/LedData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/LedFunctionDialogFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/pager_adapter/LedPagerAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/LedPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_setting/LedSettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_state/LedStateFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/MachineSettingActivity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_state/MachineStateFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/MainActivity$PreferenceChangeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/MainActivity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/NewSemsData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/NewSemsFunctionDialogFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/pager_adapter/NewSemsPagerAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/NewSemsPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_setting/NewSemsSettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_state/NewSemsStateFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/OldSemsData$Key.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/data/OldSemsData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/OldSemsFunctionDialogFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/pager_adapter/OldSemsPagerAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/OldSemsPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_setting/OldSemsSettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/machine_state/OldSemsStateFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/PasswordConfirmDialogFragment$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/dialog/PasswordConfirmDialogFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/preference/PreferenceKeys.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$attr.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$drawable.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$id.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$layout.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$menu.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$string.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R$xml.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/R.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/RequestCodes.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/SemsApp.apk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/application/SemsApplication.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/SettingActivity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/SettingFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/SingleFragmentActivity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/receiver/SmsReceiver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/utility/SmsSender.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/activity/tab/TabHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/utility/TelephonyCaller.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/fragment/viewpager/ViewPagerFragment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes.dex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-ldpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/resources.ap_" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/com/example/SemsApp/preference/temp.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.project" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SemsApp.eml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SemsApp.userlibraries" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SemsApp.iml" afterPath="$PROJECT_DIR$/SemsApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/SemsApp.apk" afterPath="$PROJECT_DIR$/bin/SemsApp.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes.dex" afterPath="$PROJECT_DIR$/bin/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/resources.ap_" afterPath="$PROJECT_DIR$/bin/resources.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SemsApp.iws" />
@@ -187,8 +117,8 @@
       <file leaf-file-name=".classpath" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.classpath">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3207547" vertical-offset="0" max-vertical-offset="477">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.39203355" vertical-offset="0" max-vertical-offset="477">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -197,8 +127,8 @@
       <file leaf-file-name=".project" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.project">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="357">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="663">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -369,23 +299,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Tests" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -872,6 +785,23 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Tests" />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SemsApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SemsApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1096,7 +1026,11 @@
       <created>1395622543450</created>
       <updated>1395622543450</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="not changed..">
+      <created>1395626373243</created>
+      <updated>1395626373243</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1114,7 +1048,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19215938" sideWeight="0.500684" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32226834" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25864455" sideWeight="0.49960223" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1129,6 +1062,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32226834" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1149,7 +1083,8 @@
     </option>
     <MESSAGE value="here is first versionn" />
     <MESSAGE value="adding component.." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="not changed.." />
+    <option name="LAST_COMMIT_MESSAGE" value="not changed.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1529,16 +1464,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.project">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="663">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.classpath">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3207547" vertical-offset="0" max-vertical-offset="477">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39203355" vertical-offset="0" max-vertical-offset="477">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
