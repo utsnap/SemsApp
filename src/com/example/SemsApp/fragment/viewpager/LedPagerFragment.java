@@ -1,9 +1,12 @@
 package com.example.SemsApp.fragment.viewpager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import com.example.SemsApp.R;
-import com.example.SemsApp.application.SemsApplicationn;
+import com.example.SemsApp.activity.MachineSettingActivity;
+import com.example.SemsApp.application.SemsApplication;
 import com.example.SemsApp.data.LedData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.LedPagerAdapter;
@@ -55,6 +58,18 @@ public class LedPagerFragment extends ViewPagerFragment<LedData> {
 
 	@Override
 	public DataLab<LedData> getDataLab() {
-		return ((SemsApplicationn)getActivity().getApplication()).dataLabs.get(SemsApplicationn.LED_DIMMER);
+		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.LED_DIMMER);
+	}
+
+	@Override
+	protected void settingMenuItemSelected() {
+		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.LED_DIMMER);
+		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
+	}
+
+	@Override
+	protected void machineSettingChanged() {
+		Log.i("utsnap", "LED dimmer setting is changed");
 	}
 }

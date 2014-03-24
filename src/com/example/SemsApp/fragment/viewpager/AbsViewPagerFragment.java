@@ -1,6 +1,7 @@
 package com.example.SemsApp.fragment.viewpager;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
@@ -13,8 +14,12 @@ import com.example.SemsApp.preference.PreferenceKeys;
 
 /**
  * Created by Administrator on 14. 3. 21.
+ * 기계의 상태 정보를 페이저 형식으로 보여주는 프래그먼트.
+ * 내부에 ViewPager를 가지고 있다.
  */
 public abstract class AbsViewPagerFragment<E> extends Fragment {
+	public static final int REQUEST_MACHINE_SETTING = 1;
+
 	protected static String EXTRA_DATA_LAB = "extra_data_lab";
 	protected static final String EXTRA_VIEW_PAGER_ID= "extra_view_pager_id";
 	protected static final String EXTRA_MENU_RESOURCE_ID = "extra_menu_resource_id";
@@ -79,7 +84,18 @@ public abstract class AbsViewPagerFragment<E> extends Fragment {
 			PasswordConfirmDialogFragment.newInstance(password, viewPagerId).show(getFragmentManager(), "");
 			return true;
 		}
+		else if ( item.getItemId() == settingMenuItemId ) {
+			settingMenuItemSelected();
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if ( requestCode == REQUEST_MACHINE_SETTING ) {
+			machineSettingChanged();
+		}
 	}
 
 	public void updateCurrentPage() {
@@ -101,4 +117,8 @@ public abstract class AbsViewPagerFragment<E> extends Fragment {
 	public abstract String getMachineName();
 
 	public abstract DataLab<E> getDataLab();
+
+	protected abstract void settingMenuItemSelected();
+
+	protected abstract void machineSettingChanged();
 }

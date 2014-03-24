@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by Administrator on 14. 3. 20.
  * 앱에서 사용되는 공유되는 데이터를 선언한다.
  */
-public class SemsApplicationn extends Application {
+public class SemsApplication extends Application {
 	public static final String newSemsDataFileName = "new_sems_data_file.txt";
 	public static final String oldSemsDataFileName = "old_sems_data_file.txt";
 	public static final String LedDataFileName = "led_sems_data_file.txt";

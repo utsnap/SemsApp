@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.example.SemsApp.R;
 import com.example.SemsApp.activity.tab.TabHandler;
-import com.example.SemsApp.application.SemsApplicationn;
+import com.example.SemsApp.application.SemsApplication;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
@@ -53,16 +53,16 @@ public class MainActivity extends Activity {
 		);
 
 		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
-		dataLabs = ((SemsApplicationn)getApplication()).dataLabs;
+		dataLabs = ((SemsApplication)getApplication()).dataLabs;
 		//완료
 
 		//테스트 : old sems 데이터를 임의로 추가한다.
-		/*dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("1번째"));
-		dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("2번째"));
-		dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("3번째"));
-		dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("4번째"));
-		dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("5번째"));
-		dataLabs.get(SemsApplicationn.OLD_SEMS).addData(OldSemsData.getInstance("6번째"));*/
+		/*dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("1번째"));
+		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("2번째"));
+		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("3번째"));
+		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("4번째"));
+		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("5번째"));
+		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("6번째"));*/
 
 		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
 		for ( DataLab dataLab : dataLabs ) {
@@ -191,10 +191,10 @@ public class MainActivity extends Activity {
 	private void updateActionBarTabs() {
 		SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean[] usedMachines = new boolean[4];
-		usedMachines[SemsApplicationn.OLD_SEMS] = sharedPreference.getBoolean(PreferenceKeys.OLD_SEMS_USED, false);
-		usedMachines[SemsApplicationn.NEW_SEMS] = sharedPreference.getBoolean(PreferenceKeys.NEW_SEMS_USED, false);
-		usedMachines[SemsApplicationn.LED_DIMMER] = sharedPreference.getBoolean(PreferenceKeys.LED_DIMMER_USED, false);
-		usedMachines[SemsApplicationn.CARBON_MACHINE] = sharedPreference.getBoolean(PreferenceKeys.CARBON_MACHINE_USED, false);
+		usedMachines[SemsApplication.OLD_SEMS] = sharedPreference.getBoolean(PreferenceKeys.OLD_SEMS_USED, false);
+		usedMachines[SemsApplication.NEW_SEMS] = sharedPreference.getBoolean(PreferenceKeys.NEW_SEMS_USED, false);
+		usedMachines[SemsApplication.LED_DIMMER] = sharedPreference.getBoolean(PreferenceKeys.LED_DIMMER_USED, false);
+		usedMachines[SemsApplication.CARBON_MACHINE] = sharedPreference.getBoolean(PreferenceKeys.CARBON_MACHINE_USED, false);
 		actionBar.removeAllTabs();
 		for ( int i = 0; i < 4; i++ ) {
 			if ( usedMachines[i] ) {

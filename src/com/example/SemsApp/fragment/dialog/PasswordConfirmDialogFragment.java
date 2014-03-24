@@ -17,6 +17,7 @@ import com.example.SemsApp.R;
 /**
  * Created by Administrator on 14. 3. 20.
  * 각 기계의 기능을 수행하기에앞서, 안전을 위해 비밀번호를 확인하는 다이얼로그
+ * 이 다이얼로그는 프레그먼트 수준에서 관리한다.
  */
 public class PasswordConfirmDialogFragment extends DialogFragment {
 	private static final String EXTRA_PASSWORD = "extra_password";
@@ -67,8 +68,19 @@ public class PasswordConfirmDialogFragment extends DialogFragment {
 						InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 						imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
 						//필수 : 기계의 기능을 수행하는 다이얼로그를 띄운다. 뷰페이저의 id를 참조하여 알맞는 기계의 기능 다이얼로그를 띄운다.
-						if ( viewPagerId == R.id.oldSemsViewPager ) {
-							new OldSemsFunctionDialogFragment().show(getFragmentManager(), "");
+						switch (viewPagerId) {
+							case R.id.oldSemsViewPager:
+								new OldSemsFunctionDialogFragment().show(getFragmentManager(), "");
+								break;
+							case R.id.newSemsViewPager:
+								new NewSemsFunctionDialogFragment().show(getFragmentManager(), "");
+								break;
+							case R.id.ledViewPager:
+							new LedFunctionDialogFragment().show(getFragmentManager(), "");
+								break;
+							case R.id.carbonViewPager:
+								new CarbonFunctionDialogFragment().show(getFragmentManager(), "");
+								break;
 						}
 					} else {
 						Log.i("utsnap", "비빌번호 틀림");

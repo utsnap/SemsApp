@@ -1,9 +1,12 @@
 package com.example.SemsApp.fragment.viewpager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import com.example.SemsApp.R;
-import com.example.SemsApp.application.SemsApplicationn;
+import com.example.SemsApp.activity.MachineSettingActivity;
+import com.example.SemsApp.application.SemsApplication;
 import com.example.SemsApp.data.CarbonData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.CarbonPagerAdapter;
@@ -57,6 +60,18 @@ public class CarbonPagerFragment extends ViewPagerFragment<CarbonData> {
 
 	@Override
 	public DataLab getDataLab() {
-		return ((SemsApplicationn)getActivity().getApplication()).dataLabs.get(SemsApplicationn.CARBON_MACHINE);
+		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.CARBON_MACHINE);
+	}
+
+	@Override
+	protected void settingMenuItemSelected() {
+		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.CARBON_MACHINE);
+		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
+	}
+
+	@Override
+	protected void machineSettingChanged() {
+		Log.i("utsnap", "Carbon Machine setting is changed");
 	}
 }

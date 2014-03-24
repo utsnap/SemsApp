@@ -27,7 +27,9 @@ public class AppSettingActivity extends SingleFragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setTitle("샘스 기본설정");
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		if ( getActionBar() != null ) {
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	@Override

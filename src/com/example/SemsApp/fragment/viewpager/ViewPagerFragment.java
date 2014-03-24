@@ -55,4 +55,14 @@ public class ViewPagerFragment<E> extends AbsViewPagerFragment<E> {
 	public DataLab<E> getDataLab() {
 		return null;
 	}
+
+	@Override
+	protected void settingMenuItemSelected() {
+		;
+	}
+
+	@Override
+	protected void machineSettingChanged() {
+		;
+	}
 }

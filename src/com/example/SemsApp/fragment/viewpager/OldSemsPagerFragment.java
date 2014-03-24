@@ -1,9 +1,12 @@
 package com.example.SemsApp.fragment.viewpager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import com.example.SemsApp.R;
-import com.example.SemsApp.application.SemsApplicationn;
+import com.example.SemsApp.activity.MachineSettingActivity;
+import com.example.SemsApp.application.SemsApplication;
 import com.example.SemsApp.data.OldSemsData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.OldSemsPagerAdapter;
@@ -61,6 +64,18 @@ public class OldSemsPagerFragment extends ViewPagerFragment<OldSemsData> {
 
 	@Override
 	public DataLab<OldSemsData> getDataLab() {
-		return ((SemsApplicationn)getActivity().getApplication()).dataLabs.get(SemsApplicationn.OLD_SEMS);
+		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.OLD_SEMS);
+	}
+
+	@Override
+	protected void settingMenuItemSelected() {
+		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.OLD_SEMS);
+		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
+	}
+
+	@Override
+	protected void machineSettingChanged() {
+		Log.i("utsnap", "Old Sems setting is changed");
 	}
 }

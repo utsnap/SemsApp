@@ -3,6 +3,7 @@ package com.example.SemsApp.preference;
 /**
  * Created by Administrator on 14. 3. 22.
  * 프리퍼런스에서 사용되는 키들을 모두 상수화 시켜 정의한다.
+ * 추후에 변경이나 추가가 있을 수 있다.
  */
 public class PreferenceKeys {
 	public static final String MACHINE_SETTING_PASSWORD = "machine_setting_password";
