@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="android-support-v13">
+    <archive path="C:/adt-bundle-windows-x86_64-20130917/sdk/extras/android/support/v13/android-support-v13.jar" />
+  </library>
+  <library name="google-gson-2.2">
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4.jar" />
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4-javadoc.jar" />
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4-sources.jar" />
+  </library>
+  <library name="google-gson-2.2">
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4.jar" />
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4-javadoc.jar" />
+    <archive path="F:/java_library/google-gson-2.2.4/gson-2.2.4-sources.jar" />
+  </library>
+  <library name="protoc-2.5">
+    <archive path="F:/java_library/protoc-2.5.0-win32/protobuf-java-2.5.0.jar" />
+    <archive path="F:/java_library/protoc-2.5.0-win32/protobuf-java-2.5.0-sources.jar" />
+  </library>
+</eclipse-userlibraries>
+
