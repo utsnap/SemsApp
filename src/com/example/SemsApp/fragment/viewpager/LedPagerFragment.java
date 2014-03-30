@@ -11,6 +11,8 @@ import com.example.SemsApp.data.LedData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.LedPagerAdapter;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 /**
  * Created by Administrator on 14. 3. 21.
  */
@@ -58,13 +60,13 @@ public class LedPagerFragment extends ViewPagerFragment<LedData> {
 
 	@Override
 	public DataLab<LedData> getDataLab() {
-		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(SemsApplication.MachineType.LED_DIMMER);
+		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(MachineType.LED_DIMMER);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.LED_DIMMER.ordinal());
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, MachineType.LED_DIMMER.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 

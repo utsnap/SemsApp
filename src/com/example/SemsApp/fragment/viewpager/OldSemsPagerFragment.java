@@ -11,6 +11,8 @@ import com.example.SemsApp.data.OldSemsData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.OldSemsPagerAdapter;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 /**
  * Created by Administrator on 14. 3. 21.
  */
@@ -64,13 +66,13 @@ public class OldSemsPagerFragment extends ViewPagerFragment<OldSemsData> {
 
 	@Override
 	public DataLab<OldSemsData> getDataLab() {
-		return ((SemsApplication)getActivity().getApplicationContext()).dataLabEnumMap.get(SemsApplication.MachineType.OLD_SEMS);
+		return ((SemsApplication)getActivity().getApplicationContext()).dataLabEnumMap.get(MachineType.OLD_SEMS);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.OLD_SEMS.ordinal());
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, MachineType.OLD_SEMS.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 

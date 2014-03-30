@@ -11,6 +11,8 @@ import com.example.SemsApp.data.CarbonData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.pager_adapter.CarbonPagerAdapter;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 /**
  * Created by Administrator on 14. 3. 21.
  */
@@ -60,13 +62,13 @@ public class CarbonPagerFragment extends ViewPagerFragment<CarbonData> {
 
 	@Override
 	public DataLab getDataLab() {
-		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(SemsApplication.MachineType.CARBON_HEATER);
+		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(MachineType.CARBON_HEATER);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.CARBON_HEATER.ordinal());
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, MachineType.CARBON_HEATER.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 

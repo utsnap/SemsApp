@@ -9,6 +9,8 @@ import com.example.SemsApp.fragment.machine_setting.LedSettingFragment;
 import com.example.SemsApp.fragment.machine_setting.NewSemsSettingFragment;
 import com.example.SemsApp.fragment.machine_setting.OldSemsSettingFragment;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 /**
  * Created by Administrator on 14. 3. 20.
  * 특정 기계의 정보를 수정하는 액티비티.
@@ -27,16 +29,16 @@ public class MachineSettingActivity extends SingleFragmentActivity {
 			Fragment fragment = null;
 			int machineOrdinal = intent.getIntExtra(EXTRA_MACHINE_TYPE, 0);
 			//Log.i("utsnap", "machine type : " + machineType);
-			if ( machineOrdinal == SemsApplication.MachineType.OLD_SEMS.ordinal() ) {
+			if ( machineOrdinal == MachineType.OLD_SEMS.ordinal() ) {
 				fragment = new OldSemsSettingFragment();
 			}
-			else if ( machineOrdinal == SemsApplication.MachineType.NEW_SEMS.ordinal() ) {
+			else if ( machineOrdinal == MachineType.NEW_SEMS.ordinal() ) {
 				fragment = new NewSemsSettingFragment();
 			}
-			else if ( machineOrdinal == SemsApplication.MachineType.LED_DIMMER.ordinal() ) {
+			else if ( machineOrdinal == MachineType.LED_DIMMER.ordinal() ) {
 				fragment = new LedSettingFragment();
 			}
-			else if ( machineOrdinal == SemsApplication.MachineType.CARBON_HEATER.ordinal() ) {
+			else if ( machineOrdinal == MachineType.CARBON_HEATER.ordinal() ) {
 				fragment = new CarbonSettingFragment();
 			}
 			return fragment;

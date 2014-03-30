@@ -17,6 +17,9 @@ import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType.*;
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 import java.util.EnumMap;
 import java.util.Stack;
 
@@ -71,9 +74,9 @@ public class MainActivity extends Activity {
 		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		tabEnumMap = new EnumMap<SemsApplication.MachineType, ActionBar.Tab>(SemsApplication.MachineType.class);
-		viewPagerFragmentEnumMap = new EnumMap<SemsApplication.MachineType, ViewPagerFragment>(SemsApplication.MachineType.class);
-		for ( SemsApplication.MachineType machineType : SemsApplication.MachineType.values() ) {
+		tabEnumMap = new EnumMap<MachineType, ActionBar.Tab>(MachineType.class);
+		viewPagerFragmentEnumMap = new EnumMap<MachineType, ViewPagerFragment>(MachineType.class);
+		for ( MachineType machineType : MachineType.values() ) {
 			ViewPagerFragment viewPagerFragment = null;
 			switch( machineType ) {
 				case OLD_SEMS:
@@ -204,14 +207,14 @@ public class MainActivity extends Activity {
 	private void updateActionBarTabs() {
 		SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
 
-		EnumMap<SemsApplication.MachineType, Boolean> usedMachineEnumMap = new EnumMap<SemsApplication.MachineType, Boolean>(SemsApplication.MachineType.class);
-		usedMachineEnumMap.put(SemsApplication.MachineType.OLD_SEMS, sharedPreference.getBoolean(PreferenceKeys.OLD_SEMS_USED, false));
-		usedMachineEnumMap.put(SemsApplication.MachineType.NEW_SEMS, sharedPreference.getBoolean(PreferenceKeys.NEW_SEMS_USED, false));
-		usedMachineEnumMap.put(SemsApplication.MachineType.LED_DIMMER, sharedPreference.getBoolean(PreferenceKeys.LED_DIMMER_USED, false));
-		usedMachineEnumMap.put(SemsApplication.MachineType.CARBON_HEATER, sharedPreference.getBoolean(PreferenceKeys.CARBON_HEATER_USED, false));
+		EnumMap<MachineType, Boolean> usedMachineEnumMap = new EnumMap<MachineType, Boolean>(MachineType.class);
+		usedMachineEnumMap.put(MachineType.OLD_SEMS, sharedPreference.getBoolean(PreferenceKeys.OLD_SEMS_USED, false));
+		usedMachineEnumMap.put(MachineType.NEW_SEMS, sharedPreference.getBoolean(PreferenceKeys.NEW_SEMS_USED, false));
+		usedMachineEnumMap.put(MachineType.LED_DIMMER, sharedPreference.getBoolean(PreferenceKeys.LED_DIMMER_USED, false));
+		usedMachineEnumMap.put(MachineType.CARBON_HEATER, sharedPreference.getBoolean(PreferenceKeys.CARBON_HEATER_USED, false));
 
 		actionBar.removeAllTabs();
-		for (SemsApplication.MachineType machineType : SemsApplication.MachineType.values()) {
+		for (MachineType machineType : MachineType.values()) {
 			if ( usedMachineEnumMap.get(machineType) ) {
 				actionBar.addTab(tabEnumMap.get(machineType));
 				//viewPagerFragmentList.get(i).showFirstPage();

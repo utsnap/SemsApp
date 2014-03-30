@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.*;
 import com.example.SemsApp.data.lab.DataLab;
 
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+
 /**
  * Created by Administrator on 14. 3. 20.
  * 뷰페이저(ViewPager)를 담고 있는 프래그먼트.
