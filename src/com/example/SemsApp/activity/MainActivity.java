@@ -208,7 +208,7 @@ public class MainActivity extends Activity {
 		usedMachineEnumMap.put(SemsApplication.MachineType.OLD_SEMS, sharedPreference.getBoolean(PreferenceKeys.OLD_SEMS_USED, false));
 		usedMachineEnumMap.put(SemsApplication.MachineType.NEW_SEMS, sharedPreference.getBoolean(PreferenceKeys.NEW_SEMS_USED, false));
 		usedMachineEnumMap.put(SemsApplication.MachineType.LED_DIMMER, sharedPreference.getBoolean(PreferenceKeys.LED_DIMMER_USED, false));
-		usedMachineEnumMap.put(SemsApplication.MachineType.CARBON_HEATER, sharedPreference.getBoolean(PreferenceKeys.CARBON_MACHINE_USED, false));
+		usedMachineEnumMap.put(SemsApplication.MachineType.CARBON_HEATER, sharedPreference.getBoolean(PreferenceKeys.CARBON_HEATER_USED, false));
 
 		actionBar.removeAllTabs();
 		for (SemsApplication.MachineType machineType : SemsApplication.MachineType.values()) {
@@ -243,9 +243,9 @@ public class MainActivity extends Activity {
 					PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceKeys.LED_DIMMER_PHONE_NUMBER, "").commit();
 				}
 			}
-			else if ( key.equals(PreferenceKeys.CARBON_MACHINE_USED) ) {
+			else if ( key.equals(PreferenceKeys.CARBON_HEATER_USED) ) {
 				if ( !sharedPreferences.getBoolean(key, false) ) {
-					PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceKeys.CARBON_MACHINE_PHONE_NUMBER, "").commit();
+					PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceKeys.CARBON_HEATER_PHONE_NUMBER, "").commit();
 				}
 			}
 		}

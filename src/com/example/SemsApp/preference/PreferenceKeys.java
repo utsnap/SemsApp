@@ -16,7 +16,7 @@ public class PreferenceKeys {
 	public static final String NEW_SEMS_PHONE_NUMBER = "new_sems_phone_number";
 	public static final String LED_DIMMER_USED = "led_dimmer_used";
 	public static final String LED_DIMMER_PHONE_NUMBER = "led_dimmer_phone_number";
-	public static final String CARBON_MACHINE_USED = "carbon_machine_used";
-	public static final String CARBON_MACHINE_PHONE_NUMBER = "carbon_machine_phone_number";
+	public static final String CARBON_HEATER_USED = "carbon_machine_used";
+	public static final String CARBON_HEATER_PHONE_NUMBER = "carbon_machine_phone_number";
 
 }
