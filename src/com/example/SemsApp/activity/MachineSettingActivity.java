@@ -25,17 +25,19 @@ public class MachineSettingActivity extends SingleFragmentActivity {
 	protected Fragment createFragment(Intent intent) {
 		if ( intent != null ) {
 			Fragment fragment = null;
-			int machineType = intent.getIntExtra(EXTRA_MACHINE_TYPE, 0);
+			int machineOrdinal = intent.getIntExtra(EXTRA_MACHINE_TYPE, 0);
 			//Log.i("utsnap", "machine type : " + machineType);
-			switch ( machineType ) {
-				case SemsApplication.OLD_SEMS :
-					fragment = new OldSemsSettingFragment(); break;
-				case SemsApplication.NEW_SEMS :
-					fragment = new NewSemsSettingFragment(); break;
-				case SemsApplication.LED_DIMMER :
-					fragment = new LedSettingFragment(); break;
-				case SemsApplication.CARBON_MACHINE :
-					fragment = new CarbonSettingFragment(); break;
+			if ( machineOrdinal == SemsApplication.MachineType.OLD_SEMS.ordinal() ) {
+				fragment = new OldSemsSettingFragment();
+			}
+			else if ( machineOrdinal == SemsApplication.MachineType.NEW_SEMS.ordinal() ) {
+				fragment = new NewSemsSettingFragment();
+			}
+			else if ( machineOrdinal == SemsApplication.MachineType.LED_DIMMER.ordinal() ) {
+				fragment = new LedSettingFragment();
+			}
+			else if ( machineOrdinal == SemsApplication.MachineType.CARBON_HEATER.ordinal() ) {
+				fragment = new CarbonSettingFragment();
 			}
 			return fragment;
 		}

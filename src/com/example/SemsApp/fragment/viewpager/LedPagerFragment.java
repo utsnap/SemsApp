@@ -58,13 +58,13 @@ public class LedPagerFragment extends ViewPagerFragment<LedData> {
 
 	@Override
 	public DataLab<LedData> getDataLab() {
-		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.LED_DIMMER);
+		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(SemsApplication.MachineType.LED_DIMMER);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.LED_DIMMER);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.LED_DIMMER.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 

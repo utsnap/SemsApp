@@ -60,13 +60,13 @@ public class CarbonPagerFragment extends ViewPagerFragment<CarbonData> {
 
 	@Override
 	public DataLab getDataLab() {
-		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.CARBON_MACHINE);
+		return ((SemsApplication)getActivity().getApplication()).dataLabEnumMap.get(SemsApplication.MachineType.CARBON_HEATER);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.CARBON_MACHINE);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.CARBON_HEATER.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 

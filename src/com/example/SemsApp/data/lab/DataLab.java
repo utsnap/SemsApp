@@ -1,18 +1,12 @@
 package com.example.SemsApp.data.lab;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-
+import android.content.Context;
+import com.example.SemsApp.application.SemsApplication;
 import com.google.gson.Gson;
 
-import android.content.Context;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Administrator on 14. 3. 20.
@@ -26,6 +20,12 @@ public class DataLab<E> implements Serializable {
 		this.dataFileName = dataFileName;
 		dataList = new ArrayList<E>();
 		this.aClass = aClass;
+	}
+
+	public DataLab(SemsApplication.MachineType machineType) {
+		this.dataFileName = machineType.getDataFileName();
+		dataList = new ArrayList<E>();
+		this.aClass = machineType.getDataClass();
 	}
 
 	/**
@@ -67,7 +67,6 @@ public class DataLab<E> implements Serializable {
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			return;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

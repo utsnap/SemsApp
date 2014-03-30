@@ -64,13 +64,13 @@ public class OldSemsPagerFragment extends ViewPagerFragment<OldSemsData> {
 
 	@Override
 	public DataLab<OldSemsData> getDataLab() {
-		return ((SemsApplication)getActivity().getApplication()).dataLabs.get(SemsApplication.OLD_SEMS);
+		return ((SemsApplication)getActivity().getApplicationContext()).dataLabEnumMap.get(SemsApplication.MachineType.OLD_SEMS);
 	}
 
 	@Override
 	protected void settingMenuItemSelected() {
 		Intent intent = new Intent(getActivity(), MachineSettingActivity.class);
-		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.OLD_SEMS);
+		intent.putExtra(MachineSettingActivity.EXTRA_MACHINE_TYPE, SemsApplication.MachineType.OLD_SEMS.ordinal());
 		startActivityForResult(intent, AbsViewPagerFragment.REQUEST_MACHINE_SETTING);
 	}
 
