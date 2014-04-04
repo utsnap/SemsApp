@@ -10,4 +10,14 @@
 	android:layout_height="wrap_content"
 	android:textAppearance="?android:attr/textAppearanceLarge"
 	android:text="Large Text"
-	android:id="@+id/textView"/></LinearLayout>
+	android:id="@+id/textView"/>
+
+	<Button android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="추가"
+	        android:id="@+id/addDataButton"/>
+	<Button android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="삭제"
+	        android:id="@+id/removeDataButton"/>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.SemsApp.fragment.pager_adapter;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import com.example.SemsApp.data.lab.DataLab;
@@ -17,6 +18,6 @@ public abstract class AbsDataPagerAdapter<E> extends FragmentStatePagerAdapter {
 
 	@Override
 	public int getCount() {
-		return dataLab.getCount();
+		return dataLab.size();
 	}
 }

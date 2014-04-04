@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import com.example.SemsApp.R;
 import com.example.SemsApp.data.OldSemsData;
@@ -39,6 +40,7 @@ public class OldSemsStateFragment extends Fragment {
 		View view = inflater.inflate(R.layout.old_sems_state_fragment, null);
 		TextView textView = (TextView) view.findViewById(R.id.oldSemsTextView);
 		textView.setText(oldSemsData.order);
+
 		return view;
 	}
 }

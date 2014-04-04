@@ -17,6 +17,6 @@ public class OldSemsPagerAdapter extends AbsDataPagerAdapter<OldSemsData> {
 
 	@Override
 	public Fragment getItem(int i) {
-		return OldSemsStateFragment.newInstance(dataLab.getData(i));
+		return OldSemsStateFragment.newInstance(dataLab.get(i));
 	}
 }

@@ -11,20 +11,20 @@ import java.util.Collection;
 /**
  * Created by Administrator on 14. 3. 20.
  */
-public class DataLab<E> implements Serializable {
-	protected ArrayList<E> dataList;
+public class DataLab<E> extends ArrayList<E> implements Serializable {
+	//protected ArrayList<E> dataList;
 	protected String dataFileName;
 	protected Class<E> aClass;
 
 	public DataLab(String dataFileName, Class<E> aClass) {
 		this.dataFileName = dataFileName;
-		dataList = new ArrayList<E>();
+		//dataList = new ArrayList<E>();
 		this.aClass = aClass;
 	}
 
 	public DataLab(SemsApplication.MachineType machineType) {
 		this.dataFileName = machineType.getDataFileName();
-		dataList = new ArrayList<E>();
+		//dataList = new ArrayList<E>();
 		this.aClass = machineType.getDataClass();
 	}
 
@@ -35,11 +35,15 @@ public class DataLab<E> implements Serializable {
 		Gson gson = new Gson();
 		try {
 			BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(context.openFileOutput(dataFileName, Context.MODE_PRIVATE)));
-			for ( E e : dataList ) {
+			for ( E e : this ) {
 				//Log.i("utsnap", "save - " + e.getClass().getSimpleName() + " : " + aClass.getSimpleName());
 				String jsonString = gson.toJson(e);
 				bufferedWriter.write(jsonString);
 				bufferedWriter.newLine();
+			}
+			if ( this.isEmpty() ) {
+				context.openFileOutput(dataFileName, Context.MODE_PRIVATE).getChannel().truncate(0);
+				bufferedWriter.write("");
 			}
 			bufferedWriter.close();
 		} catch (FileNotFoundException e) {
@@ -56,23 +60,28 @@ public class DataLab<E> implements Serializable {
 	 * */
 	public void loadFromFile(Context context) {
 		Gson gson = new Gson();
-		dataList.clear();
+		this.clear();
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.openFileInput(dataFileName)));
 			while ( bufferedReader.ready() ) {
 				String jsonString = bufferedReader.readLine();
+				if ( jsonString.equals("") ) {
+					break;
+				}
 				E e = (E) gson.fromJson(jsonString, aClass);
 				//Log.i("utsnap", "load - " + e.getClass().getSimpleName() + " : " + aClass.getSimpleName());
-				dataList.add(e);
+				this.add(e);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 	}
 
-	public void addData(E data) {
+	/*public void addData(E data) {
 		dataList.add(data);
 	}
 
@@ -86,5 +95,5 @@ public class DataLab<E> implements Serializable {
 
 	public int getCount() {
 		return dataList.size();
-	}
+	}*/
 }

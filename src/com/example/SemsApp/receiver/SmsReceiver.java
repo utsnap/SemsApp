@@ -6,10 +6,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import com.example.SemsApp.activity.MainActivity;
 import com.example.SemsApp.application.SemsApplication;
+import com.example.SemsApp.data.OldSemsData;
+import com.example.SemsApp.preference.PreferenceKeys;
 
 import java.util.Stack;
 
@@ -23,10 +26,15 @@ public class SmsReceiver extends BroadcastReceiver {
 	public static final int STOP_SERVICE = 2;
 	private Stack<Activity> activityStack;
 
+	private SemsApplication semsApplication;
+
 	public static final String ACTION_SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
 	public void onReceive(Context context, Intent intent) {
-		activityStack = ((SemsApplication)context.getApplicationContext()).activityStack;
+		semsApplication = (SemsApplication)context.getApplicationContext();
+
+		activityStack = semsApplication.activityStack;
+
 		/*이 부분만 확인한다.*/
 		if ( intent.getAction().equals(ACTION_SMS_RECEIVED) ) {
 			//Log.i("utsnap", "문자 왔어요~~");
@@ -49,6 +57,7 @@ public class SmsReceiver extends BroadcastReceiver {
 				strings[0] = smsMessages[i].getOriginatingAddress();
 				strings[1] = smsMessages[i].getMessageBody();
 			}
+
 			Intent intent1 = new Intent(context, MainActivity.class);
 			PendingIntent pendingIntent;
 			intent1.putExtra("sms_data", strings);

@@ -100,6 +100,10 @@ public abstract class AbsViewPagerFragment<E> extends Fragment {
 		}
 	}
 
+	public ViewPager getViewPager() {
+		return viewPager;
+	}
+
 	public void updateCurrentPage() {
 		viewPager.setCurrentItem(viewPager.getCurrentItem(), false);
 	}

@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.SemsApp.R;
 import com.example.SemsApp.activity.tab.TabHandler;
 import com.example.SemsApp.application.SemsApplication;
+import com.example.SemsApp.data.OldSemsData;
 import com.example.SemsApp.data.lab.DataLab;
+import com.example.SemsApp.fragment.dialog.OldSemsFunctionDialogFragment;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 
@@ -28,7 +31,7 @@ import java.util.Stack;
  * Created by Administrator on 14. 3. 20.
  * 셈스앱의 진입액티비티이다.
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OldSemsFunctionDialogFragment.Callbacks {
 	public static final int REQUEST_APP_SETTING = 1;
 
 	private EnumMap<SemsApplication.MachineType, DataLab> dataLabEnumMap;
@@ -56,19 +59,18 @@ public class MainActivity extends Activity {
 		dataLabEnumMap = ((SemsApplication)getApplicationContext()).dataLabEnumMap;
 		//완료
 
-		//테스트 : old sems 데이터를 임의로 추가한다.
-		/*dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("1번째"));
-		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("2번째"));
-		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("3번째"));
-		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("4번째"));
-		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("5번째"));
-		dataLabs.get(SemsApplication.OLD_SEMS).addData(OldSemsData.getInstance("6번째"));*/
 
 		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
 		for ( DataLab dataLab : dataLabEnumMap.values() ) {
 			dataLab.loadFromFile(this);
 		}
 		//완료
+
+		//테스트 : old sems 데이터를 임의로 추가한다.
+		/*dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("1번째"));
+		dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("2번째"));
+		dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("3번째"));
+		dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("4번째"));*/
 
 		//필수 : 액션바에 탭을 구성해야 한다.
 		actionBar = getActionBar();
@@ -117,6 +119,7 @@ public class MainActivity extends Activity {
 		//필수 : 액티비티 스택을 받아옴.
 		activityStack = ((SemsApplication)getApplicationContext()).activityStack;
 		activityStack.push(this);
+		//완료
 	}
 
 	@Override
@@ -124,7 +127,7 @@ public class MainActivity extends Activity {
 		super.onRestart();
 		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
 		for ( DataLab dataLab : dataLabEnumMap.values() ) {
-			dataLab.saveToFile(this);
+			dataLab.loadFromFile(this);
 		}
 		//완료
 
@@ -148,12 +151,12 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onStop() {
+		super.onStop();
 		//필수 : 긱 기계의 상태정보를 파일에 저장한다.
 		for ( DataLab dataLab : dataLabEnumMap.values() ) {
 			dataLab.saveToFile(this);
 		}
 		//완료
-		super.onStop();
 	}
 
 	@Override
@@ -219,6 +222,16 @@ public class MainActivity extends Activity {
 				actionBar.addTab(tabEnumMap.get(machineType));
 				//viewPagerFragmentList.get(i).showFirstPage();
 			}
+		}
+	}
+
+	@Override
+	public void dataLabChanged() {
+		viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().getAdapter().notifyDataSetChanged();
+		viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().getAdapter());
+		if ( !dataLabEnumMap.get(OLD_SEMS).isEmpty() ) {
+			viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().setCurrentItem(dataLabEnumMap.get(OLD_SEMS).size() - 1);
+			Log.i("utsnap", "dataLab size : " + dataLabEnumMap.get(OLD_SEMS).size());
 		}
 	}
 
