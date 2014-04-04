@@ -264,6 +264,27 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 					PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceKeys.CARBON_HEATER_PHONE_NUMBER, "").commit();
 				}
 			}
+			else if ( key.equals(PreferenceKeys.FIRST_PHONE_NUMBER) ) {
+				//Log.i("utsnap", "전화번호 변경됨..");
+				String firstPhoneNumber = sharedPreferences.getString(PreferenceKeys.FIRST_PHONE_NUMBER, "");
+				if ( !firstPhoneNumber.equals("") ) {
+					//필수 : 기계에 비상시에 연락하는 번호를 등록해야 한다.
+				}
+			}
+			else if ( key.equals(PreferenceKeys.SECOND_PHONE_NUMBER) ) {
+				//Log.i("utsnap", "전화번호 변경됨..");
+				String secondPhoneNumber = sharedPreferences.getString(PreferenceKeys.SECOND_PHONE_NUMBER, "");
+				if ( !secondPhoneNumber.equals("") ) {
+					//필수 : 기계에 비상시에 연락하는 번호를 등록해야 한다.
+				}
+			}
+			else if ( key.equals(PreferenceKeys.THIRD_PHONE_NUMBER) ) {
+				//Log.i("utsnap", "전화번호 변경됨..");
+				String thirdPhoneNumber = sharedPreferences.getString(PreferenceKeys.THIRD_PHONE_NUMBER, "");
+				if ( !thirdPhoneNumber.equals("") ) {
+					//필수 : 기계에 비상시에 연락하는 번호를 등록해야 한다.
+				}
+			}
 		}
 	}
 }

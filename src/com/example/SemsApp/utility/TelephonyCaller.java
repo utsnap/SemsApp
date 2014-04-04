@@ -11,8 +11,7 @@ import com.example.SemsApp.preference.PreferenceKeys;
  * Created by Administrator on 14. 3. 23.
  * 기계에 전화하는 기능을 구현한다.
  */
-public class TelephonyCaller {
-
+public final class TelephonyCaller {
 	/**
 	 * 구셈스기계에 전화를 건다.
 	 * 설정에서의 기계 사용여부를 조사하고, 그후에 전화번호를 참조한다.
