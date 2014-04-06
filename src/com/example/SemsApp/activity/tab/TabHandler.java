@@ -25,6 +25,6 @@ public class TabHandler implements ActionBar.TabListener {
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-		viewPagerFragment.showFirstPage();
+		//viewPagerFragment.showFirstPage();
 	}
 }

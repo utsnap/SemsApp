@@ -6,15 +6,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import com.example.SemsApp.activity.MainActivity;
 import com.example.SemsApp.application.SemsApplication;
-import com.example.SemsApp.data.OldSemsData;
-import com.example.SemsApp.preference.PreferenceKeys;
+import com.google.gson.Gson;
 
 import java.util.Stack;
+
+import static com.example.SemsApp.application.SemsApplication.MachineType.OLD_SEMS;
 
 /**
  * Created by Administrator on 14. 3. 20.
@@ -59,6 +59,11 @@ public class SmsReceiver extends BroadcastReceiver {
 			}
 
 			Intent intent1 = new Intent(context, MainActivity.class);
+			intent1.setAction(MainActivity.ACTION_DATA_RECEIVED);
+			Gson gson = new Gson();
+			String machineTypeJson = gson.toJson(OLD_SEMS);
+			intent1.putExtra(MainActivity.EXTRA_MACHINE_TYPE_JSON, machineTypeJson);
+
 			PendingIntent pendingIntent;
 			intent1.putExtra("sms_data", strings);
 			if ( activityStack.size() == 0 ) {

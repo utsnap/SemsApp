@@ -29,6 +29,15 @@
 	    <activity android:name=".activity.MachineSettingActivity"
 	              android:theme="@android:style/Theme.Dialog"/>
 	    <activity android:name=".activity.SettingActivity"/>
-        <receiver android:name=".receiver.SmsReceiver"/>
+        <receiver android:name=".receiver.SmsReceiver">
+	        <intent-filter>
+		        <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+	        </intent-filter>
+        </receiver>
+	    <receiver android:name=".receiver.PseudoSmsReceiver">
+		    <intent-filter>
+		        <action android:name="android.provider.Telephony.PSEUDO_SMS_RECEIVED"/>
+	        </intent-filter>
+	    </receiver>
     </application>
 </manifest>

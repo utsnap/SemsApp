@@ -39,7 +39,7 @@ public class OldSemsStateFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.old_sems_state_fragment, null);
 		TextView textView = (TextView) view.findViewById(R.id.oldSemsTextView);
-		textView.setText(oldSemsData.order);
+		textView.setText(oldSemsData.detail);
 
 		return view;
 	}

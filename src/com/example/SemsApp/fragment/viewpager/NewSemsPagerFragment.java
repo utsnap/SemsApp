@@ -20,6 +20,7 @@ public class NewSemsPagerFragment extends ViewPagerFragment<NewSemsData> {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		viewPager.setAdapter(new NewSemsPagerAdapter(getFragmentManager(), dataLab));
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class NewSemsPagerFragment extends ViewPagerFragment<NewSemsData> {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		viewPager.setAdapter(new NewSemsPagerAdapter(getFragmentManager(), dataLab));
 		return view;
 	}
 

@@ -37,11 +37,7 @@ public class OldSemsFunctionDialogFragment extends AbsFunctionDialog {
 			public void onClick(View v) {
 				DataLab<OldSemsData> dataDataLab = ((SemsApplication)getActivity().getApplicationContext()).dataLabEnumMap.get(SemsApplication.MachineType.OLD_SEMS);
 				if ( dataDataLab.size() < 4 ) {
-					dataDataLab.add(OldSemsData.getInstance(dataDataLab.size() + "번째 데이터"));
-					callbacks.dataLabChanged();
-				}
-				else {
-					dataDataLab.set(3, OldSemsData.getInstance(dataDataLab.size() + "번째 데이터"));
+					//dataDataLab.add(OldSemsData.getInstance(dataDataLab.size() + 1, (dataDataLab.size() + 1) + "번째 데이터"));
 					callbacks.dataLabChanged();
 				}
 			}

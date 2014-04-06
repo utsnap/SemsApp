@@ -8,23 +8,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.SemsApp.R;
 import com.example.SemsApp.activity.tab.TabHandler;
 import com.example.SemsApp.application.SemsApplication;
-import com.example.SemsApp.data.OldSemsData;
 import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.dialog.OldSemsFunctionDialogFragment;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
+import com.google.gson.Gson;
 
-import static com.example.SemsApp.application.SemsApplication.MachineType.*;
-import static com.example.SemsApp.application.SemsApplication.MachineType;
-
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Stack;
+
+import static com.example.SemsApp.application.SemsApplication.MachineType;
+import static com.example.SemsApp.application.SemsApplication.MachineType.OLD_SEMS;
 
 
 /**
@@ -33,6 +33,12 @@ import java.util.Stack;
  */
 public class MainActivity extends Activity implements OldSemsFunctionDialogFragment.Callbacks {
 	public static final int REQUEST_APP_SETTING = 1;
+	public static final String ACTION_DATA_RECEIVED = "ACTION_DATA_RECEIVED";
+	public static final String EXTRA_MACHINE_TYPE_JSON = "EXTRA_MACHINE_TYPE_JSON";
+	public static final String EXTRA_DATA_JSON = "EXTRA_DATA_JSON";
+	public static final String EXTRA_DATA_CLASS = "EXTRA_DATA_CLASS";
+	public static final String EXTRA_DATA_LAB_INDEX = "EXTRA_DATA_LAB_INDEX";
+	private static final Gson GSON = new Gson();
 
 	private EnumMap<SemsApplication.MachineType, DataLab> dataLabEnumMap;
 	private ActionBar actionBar;
@@ -41,6 +47,10 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 	private Stack<Activity> activityStack;
 
+	private boolean bModified = false;
+	private MachineType modifiedMachine = null;
+	private int modifiedIndex = -1;
+	private Object addedData = null;
 
 	/**
 	 * Called when the activity is first created.
@@ -54,17 +64,6 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(
 			new PreferenceChangeHandler(this)
 		);
-
-		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
-		dataLabEnumMap = ((SemsApplication)getApplicationContext()).dataLabEnumMap;
-		//완료
-
-
-		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
-		for ( DataLab dataLab : dataLabEnumMap.values() ) {
-			dataLab.loadFromFile(this);
-		}
-		//완료
 
 		//테스트 : old sems 데이터를 임의로 추가한다.
 		/*dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("1번째"));
@@ -97,6 +96,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 			viewPagerFragmentEnumMap.put(machineType, viewPagerFragment);
 			ActionBar.Tab tab = actionBar.newTab()
 				.setText(machineType.getMachineName())
+				.setTag(machineType)
 				.setTabListener(new TabHandler(viewPagerFragment));
 			tabEnumMap.put(machineType, tab);
 		}
@@ -120,28 +120,113 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		activityStack = ((SemsApplication)getApplicationContext()).activityStack;
 		activityStack.push(this);
 		//완료
+
+		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
+		dataLabEnumMap = ((SemsApplication)getApplicationContext()).dataLabEnumMap;
+		//완료
+
+		//필수 : 데이터를 받았는지 확인하고 적절한 처리를 한다.
+		Intent intent = getIntent();
+		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
+			bModified = true;
+			String machintTypeJson = intent.getStringExtra(EXTRA_MACHINE_TYPE_JSON);
+			modifiedMachine = GSON.fromJson(machintTypeJson, MachineType.class);
+			Class dataClass = (Class) intent.getSerializableExtra(EXTRA_DATA_CLASS);
+			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
+			modifiedIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
+
+			//필수 : 받은 데이터의 탭을 활성화시킨다.
+			int tabIndex = -1;
+			for ( int i = 0; i < actionBar.getTabCount(); i++ ) {
+				if ( actionBar.getTabAt(i).getTag().equals(modifiedMachine) ) {
+					tabIndex = i;
+					break;
+				}
+			}
+			actionBar.setSelectedNavigationItem(tabIndex);
+			//완료
+
+			//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
+			dataLabEnumMap.get(modifiedMachine).add(GSON.fromJson(dataJson, dataClass));
+			addedData = dataLabEnumMap.get(modifiedMachine).get(dataLabEnumMap.get(modifiedMachine).size() - 1);
+			Collections.sort(dataLabEnumMap.get(modifiedMachine));
+			//완료
+		}
+
+		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
+		for ( MachineType machineType : MachineType.values() ) {
+			if ( !machineType.equals(modifiedMachine) ) {
+				dataLabEnumMap.get(machineType).loadFromFile(this);
+			}
+		}
+		//완료
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
+			//Log.i("utsnap", "onNewIntent");
+			bModified = true;
+			String machintTypeJson = intent.getStringExtra(EXTRA_MACHINE_TYPE_JSON);
+			modifiedMachine = GSON.fromJson(machintTypeJson, MachineType.class);
+			Class dataClass = (Class) intent.getSerializableExtra(EXTRA_DATA_CLASS);
+			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
+			modifiedIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
+
+			//필수 : 받은 데이터의 탭을 활성화시킨다.
+			int tabIndex = -1;
+			for ( int i = 0; i < actionBar.getTabCount(); i++ ) {
+				if ( actionBar.getTabAt(i).getTag().equals(modifiedMachine) ) {
+					tabIndex = i;
+					break;
+				}
+			}
+			actionBar.setSelectedNavigationItem(tabIndex);
+			//완료
+
+			//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
+			dataLabEnumMap.get(modifiedMachine).add(GSON.fromJson(dataJson, dataClass));
+			addedData = dataLabEnumMap.get(modifiedMachine).get(dataLabEnumMap.get(modifiedMachine).size() - 1);
+			Collections.sort(dataLabEnumMap.get(modifiedMachine));
+			//완료
+		}
 	}
 
 	@Override
 	protected void onRestart() {
-		super.onRestart();
+		super.onRestart();//Log.i("utsnap", "onRestart");
 		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
-		for ( DataLab dataLab : dataLabEnumMap.values() ) {
-			dataLab.loadFromFile(this);
+		for ( MachineType machineType : MachineType.values() ) {
+			if ( !machineType.equals(modifiedMachine) ) {
+				dataLabEnumMap.get(machineType).loadFromFile(this);
+			}
 		}
 		//완료
-
-		activityStack.push(this);
+		//Log.i("utsnap", String.valueOf(activityStack.size()));
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
+		if ( bModified ) {
+			dataLabChanged(modifiedMachine, addedData);
+			bModified = false;
+			modifiedMachine = null;
+			modifiedIndex = -1;
+			addedData = null;
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		if ( bModified ) {
+			dataLabChanged(modifiedMachine, addedData);
+			bModified = false;
+			modifiedMachine = null;
+			modifiedIndex = -1;
+			addedData = null;
+		}
 	}
 
 	@Override
@@ -162,7 +247,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		activityStack.pop();
+		activityStack.clear();
 	}
 
 	@Override
@@ -231,8 +316,15 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().getAdapter());
 		if ( !dataLabEnumMap.get(OLD_SEMS).isEmpty() ) {
 			viewPagerFragmentEnumMap.get(OLD_SEMS).getViewPager().setCurrentItem(dataLabEnumMap.get(OLD_SEMS).size() - 1);
-			Log.i("utsnap", "dataLab size : " + dataLabEnumMap.get(OLD_SEMS).size());
+			//Log.i("utsnap", "dataLab size : " + dataLabEnumMap.get(OLD_SEMS).size());
 		}
+	}
+
+	public void dataLabChanged(MachineType machineType, Object addedData) {
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter().notifyDataSetChanged();
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter());
+		int targetIndex = dataLabEnumMap.get(machineType).indexOf(addedData);
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().setCurrentItem(targetIndex, true);
 	}
 
 	private class PreferenceChangeHandler implements SharedPreferences.OnSharedPreferenceChangeListener {

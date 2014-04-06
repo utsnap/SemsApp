@@ -20,6 +20,7 @@ public class LedPagerFragment extends ViewPagerFragment<LedData> {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		viewPager.setAdapter(new LedPagerAdapter(getFragmentManager(), dataLab));
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class LedPagerFragment extends ViewPagerFragment<LedData> {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		viewPager.setAdapter(new LedPagerAdapter(getFragmentManager(), dataLab));
 		return view;	}
 
 	@Override

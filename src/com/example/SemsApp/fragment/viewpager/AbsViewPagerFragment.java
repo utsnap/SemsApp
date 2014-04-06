@@ -12,8 +12,6 @@ import com.example.SemsApp.data.lab.DataLab;
 import com.example.SemsApp.fragment.dialog.PasswordConfirmDialogFragment;
 import com.example.SemsApp.preference.PreferenceKeys;
 
-import static com.example.SemsApp.application.SemsApplication.MachineType;
-
 /**
  * Created by Administrator on 14. 3. 21.
  * 기계의 상태 정보를 페이저 형식으로 보여주는 프래그먼트.
@@ -109,7 +107,9 @@ public abstract class AbsViewPagerFragment<E> extends Fragment {
 	}
 
 	public void showFirstPage() {
-		viewPager.setCurrentItem(0, true);
+		if ( viewPager.getAdapter().getCount() > 0 ) {
+			viewPager.setCurrentItem(0, true);
+		}
 	}
 
 	protected abstract int getViewPagerId();

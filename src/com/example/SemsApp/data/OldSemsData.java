@@ -1,6 +1,7 @@
 package com.example.SemsApp.data;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -9,36 +10,40 @@ import java.util.HashMap;
  *
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
-public class OldSemsData implements Serializable {
+public class OldSemsData implements Serializable, Comparable {
 
 	private HashMap<Key, ?> tokenHashMap;
-	public String order;
-	private int number;
+	public int order;
+	public String detail;
 
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
 	 * 테스트용이다
 	 * */
-	public static OldSemsData getInstance(String string) {
+	public static OldSemsData getInstance(int order, String string) {
 		//필수 : 문자열처리 및 객체 생성
-		return new OldSemsData(string);
+		return new OldSemsData(order, string);
 	}
 
-	/**
-	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
-	 * */
-	public static OldSemsData getInstance(HashMap<Key, ?> tokenHashMap) {
-		//필수 : 맵에서 정보를 읽어서 객체 생성
-		return new OldSemsData(tokenHashMap);
-	}
-
-	private OldSemsData(String order) {
+	private OldSemsData(int order, String detail) {
 		this.order = order;
+		this.detail = detail;
 	}
 
-	private OldSemsData(HashMap<Key, ?> tokenHashMap) {
-		this.tokenHashMap = tokenHashMap;
+	@Override
+	public int compareTo(Object another) {
+		OldSemsData anotherData = (OldSemsData)another;
+		if ( this.order < anotherData.order ) {
+			return -1;
+		}
+		else if ( this.order == anotherData.order ) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
 	}
+
 
 	static enum Key {
 		KEY_ORDER_STRING(String.class),
