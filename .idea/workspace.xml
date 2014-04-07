@@ -29,11 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="406f3288-2735-4579-8ef9-fde5e1c6bc07" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/utility/PushWakeLock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/OldSemsFunctionDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/OldSemsFunctionDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/receiver/PseudoSmsReceiver.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/receiver/PseudoSmsReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SemsApp.iws" />
@@ -98,11 +94,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35664335" vertical-offset="3179" max-vertical-offset="6851">
-              <caret line="196" column="30" selection-start-line="196" selection-start-column="30" selection-end-line="196" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3536" max-vertical-offset="6851">
+              <caret line="222" column="10" selection-start-line="222" selection-start-column="10" selection-end-line="222" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -148,18 +144,18 @@
       <file leaf-file-name="PseudoSmsReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/receiver/PseudoSmsReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1530">
-              <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1530">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmsSender.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SmsSender.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="3315">
-              <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+            <state vertical-scroll-proportion="2.5384614" vertical-offset="0" max-vertical-offset="3298">
+              <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -168,8 +164,8 @@
       <file leaf-file-name="SmsReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/receiver/SmsReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1530">
-              <caret line="33" column="21" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1530">
+              <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -254,7 +250,6 @@
         <option value="$PROJECT_DIR$/res/layout/old_sems_state_fragment.xml" />
         <option value="$PROJECT_DIR$/res/layout/old_sems_function_dialog.xml" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/utility/TelephonyCaller.java" />
-        <option value="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplication.java" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/data/OldSemsData.java" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/OldSemsStateFragment.java" />
@@ -275,6 +270,7 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/receiver/PseudoSmsReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" />
       </list>
     </option>
   </component>
@@ -707,7 +703,11 @@
       <created>1396800781457</created>
       <updated>1396800781457</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="screen on tested.">
+      <created>1396837384540</created>
+      <updated>1396837384540</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -767,7 +767,8 @@
     <MESSAGE value="dataLab changed and viewPager tested." />
     <MESSAGE value="SmsSender is completed." />
     <MESSAGE value="architecture was changed and sms service was simulated." />
-    <option name="LAST_COMMIT_MESSAGE" value="architecture was changed and sms service was simulated." />
+    <MESSAGE value="screen on tested." />
+    <option name="LAST_COMMIT_MESSAGE" value="screen on tested." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1142,34 +1143,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="3315">
-          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3536" max-vertical-offset="6851">
+          <caret line="222" column="10" selection-start-line="222" selection-start-column="10" selection-end-line="222" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/receiver/SmsReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1530">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1530">
+          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/receiver/PseudoSmsReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1530">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1530">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35664335" vertical-offset="3179" max-vertical-offset="6851">
-          <caret line="196" column="30" selection-start-line="196" selection-start-column="30" selection-end-line="196" selection-end-column="30" />
+        <state vertical-scroll-proportion="2.5384614" vertical-offset="0" max-vertical-offset="3298">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
           <folding />
         </state>
       </provider>

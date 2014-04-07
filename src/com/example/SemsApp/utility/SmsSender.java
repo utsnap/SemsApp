@@ -1,7 +1,6 @@
 package com.example.SemsApp.utility;
 
 import android.telephony.SmsManager;
-import android.util.Log;
 
 /**
  * Created by Administrator on 14. 3. 23.
@@ -64,8 +63,8 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type);
-		Log.i("utsnap", stringBuilder.toString());
-		//SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
+		//Log.i("utsnap", stringBuilder.toString());
+		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
 	public static final void sendSms(
