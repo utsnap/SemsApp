@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import com.example.SemsApp.activity.MainActivity;
 import com.example.SemsApp.application.SemsApplication;
@@ -23,6 +24,8 @@ public class PseudoSmsReceiver extends BroadcastReceiver {
 	public static final Gson GSON = new Gson();
 	public static final int START_SERVICE = 1;
 	public static final int STOP_SERVICE = 2;
+	private static final long[] vibrationPattern = {500, 200, 500, 200, 500, 200};
+
 	private Stack<Activity> activityStack;
 
 	private SemsApplication semsApplication;
@@ -34,13 +37,20 @@ public class PseudoSmsReceiver extends BroadcastReceiver {
 
 		activityStack = semsApplication.activityStack;
 
+		Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		/*이 부분만 확인한다.*/
 		if ( intent.getAction().equals(ACTION_PSEUDO_SMS_RECEIVED) ) {
 			//Log.i("utsnap", "유사문자 왔어요~~");
+
 			String sms = intent.getStringExtra("sms");
 			String phone = intent.getStringExtra("phone");
 			if ( preferences.getString(PreferenceKeys.OLD_SEMS_PHONE_NUMBER, "").equals(phone) ) {
+				//선택 : 진동을 울린다.
+				vibrator.vibrate(vibrationPattern, -1);
+				//완료
+
 				int dataLabIndex = Integer.parseInt(sms.substring(1, 2)) - 1;
 				//Log.i("utsnap", String.valueOf(dataLabIndex));
 

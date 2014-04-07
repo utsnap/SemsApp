@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import com.example.SemsApp.R;
 import com.example.SemsApp.activity.tab.TabHandler;
 import com.example.SemsApp.application.SemsApplication;
@@ -59,6 +60,15 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.single_fragment_activity);
+
+		//필수 : 화면을 활성화시킨다.
+		getWindow().addFlags(
+			WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+			| WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+			| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+			| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+		);
+		//완료
 
 		//필수 : 프리퍼런스의 변화시에 수행되는 기능을 설정한다.
 		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(
@@ -164,6 +174,15 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 	@Override
 	protected void onNewIntent(Intent intent) {
+		//필수 : 화면을 활성화시킨다.
+		getWindow().addFlags(
+			WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+				| WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+				| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+				| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+		);
+		//완료
+
 		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
 			//Log.i("utsnap", "onNewIntent");
 			bModified = true;

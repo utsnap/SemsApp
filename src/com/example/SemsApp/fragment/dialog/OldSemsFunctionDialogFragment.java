@@ -24,7 +24,6 @@ public class OldSemsFunctionDialogFragment extends AbsFunctionDialog {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		callbacks = (Callbacks) getActivity();
-
 	}
 
 	@Override
