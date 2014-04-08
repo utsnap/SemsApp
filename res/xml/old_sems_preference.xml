@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--구버전 샘스의 설정을 저장-->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  
+	<PreferenceScreen android:key="screen_preference"
+	                  android:title="비상 연락처 설정"
+	                  android:summary="비상시에 연락받을 전화번호를 등록">
+
+			<EditTextPreference android:key="old_sems_emergency_contact1"
+			                    android:title="첫번째 연락처"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="old_sems_emergency_contact2"
+			                    android:title="두번째 연락처"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="old_sems_emergency_contact3"
+			                    android:title="세번째 연락처"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="old_sems_emergency_contact4"
+			                    android:title="네번째 연락처"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+
+			<EditTextPreference android:key="old_sems_emergency_contact5"
+			                    android:title="다섯번째 연락처"
+			                    android:phoneNumber="true"
+			                    android:inputType="phone"
+			                    android:defaultValue=""/>
+	</PreferenceScreen>
+
+	<EditTextPreference android:key="OLD_SEMS_SMS_SENDING_TIME"
+	                    android:summary="예) 13:23 -> 1323"
+	                    android:title="기계 설정시 비밀번호"
+	                    android:inputType="datetime"
+	                    android:maxLength="4"/>
 </PreferenceScreen>

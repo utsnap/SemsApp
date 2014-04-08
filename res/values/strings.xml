@@ -7,4 +7,17 @@
 	<string name="old_sems">Old\nSems</string>
 	<string name="led_dimmer">LED\nDimmer</string>
 	<string name="carbon_machine">Carbon\nMachine</string>
+	<string name="machine_number">장비 번호</string>
+	<string name="cancel">취소</string>
+	<string name="sensor_number">센서 번호</string>
+	<string name="setting_regular_sms_sending_time">정규문자 발송시간 설정</string>
+	<string name="setting">설정</string>
+	<string name="setting_emergency_contact">비상연락처 설정</string>
+	<string name="lockup">조회</string>
+	<string name="getting_warning_range">센서경고범위 조회</string>
+	<string name="getting_sensor_type">센서종류 조회</string>
+	<string name="getting_sensor_availability">센서사용유무 조회</string>
+	<string name="setting_warning_range">센서경고범위 설정</string>
+	<string name="setting_sensor_availability">센서사용유무 설정</string>
+	<string name="setting_sensor_type">센서종류 설정</string>
 </resources>

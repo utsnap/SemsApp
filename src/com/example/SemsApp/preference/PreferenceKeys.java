@@ -19,4 +19,10 @@ public class PreferenceKeys {
 	public static final String CARBON_HEATER_USED = "carbon_machine_used";
 	public static final String CARBON_HEATER_PHONE_NUMBER = "carbon_machine_phone_number";
 
+	public static final String OLD_SEMS_EMERGENCY_CONTACT1 = "old_sems_emergency_contact1";
+	public static final String OLD_SEMS_EMERGENCY_CONTACT2 = "old_sems_emergency_contact2";
+	public static final String OLD_SEMS_EMERGENCY_CONTACT3 = "old_sems_emergency_contact3";
+	public static final String OLD_SEMS_EMERGENCY_CONTACT4 = "old_sems_emergency_contact4";
+	public static final String OLD_SEMS_EMERGENCY_CONTACT5 = "old_sems_emergency_contact5";
+
 }

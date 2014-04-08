@@ -9,7 +9,7 @@ public class LedSettingFragment extends AbsMachineSettingFragment {
 
 	@Override
 	protected String getTitle() {
-		return "LED조광기 설정";
+		return "LED조광기 상세설정";
 	}
 
 	@Override

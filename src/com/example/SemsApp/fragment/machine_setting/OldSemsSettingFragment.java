@@ -9,7 +9,7 @@ public class OldSemsSettingFragment extends AbsMachineSettingFragment {
 
 	@Override
 	protected String getTitle() {
-		return "Old Sems 설정";
+		return "Old Sems 상세설정";
 	}
 
 	@Override

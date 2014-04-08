@@ -8,10 +8,9 @@
 	                        android:maxLength="8"
 	                        android:defaultValue=""/>
 
-		<PreferenceScreen
-			android:key="screen_preference"
-			android:title="수신 전화번호 설정"
-			android:summary="비상시에 연락받을 전화번호를 등록">
+		<PreferenceScreen android:key="screen_preference"
+		                  android:title="수신 전화번호 설정"
+		                  android:summary="비상시에 연락받을 전화번호를 등록">
 
 			<EditTextPreference android:key="first_phone_number"
 			                    android:title="첫번째 번호"

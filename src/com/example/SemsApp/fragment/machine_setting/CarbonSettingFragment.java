@@ -9,7 +9,7 @@ public class CarbonSettingFragment extends AbsMachineSettingFragment {
 
 	@Override
 	protected String getTitle() {
-		return "탄소봉 히터 설정";
+		return "탄소봉 히터 상세설정";
 	}
 
 	@Override
