@@ -29,41 +29,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="406f3288-2735-4579-8ef9-fde5e1c6bc07" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/BaseData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/DataManageable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/receiver/OutGoingCallReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/carbon_heater_data_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/dexedLibs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/led_dimmer_data_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/new_sems_data_preference.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/old_sems_data_preference.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/AbsDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/AbsDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/data/CarbonData.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/CarbonData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/data/lab/DataLab.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/lab/DataLab.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetSensorAvailabilityDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetSensorAvailabilityDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetSensorTypeDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetSensorTypeDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetWarningRangeDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/GetWarningRangeDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/data/LedData.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/LedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/data/NewSemsData.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/NewSemsData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/NewSemsFunctionDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/NewSemsFunctionDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/data/OldSemsData.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/data/OldSemsData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/OldSemsStateFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/machine_state/OldSemsStateFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/preference/PreferenceKeys.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/preference/PreferenceKeys.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SemsApp.iml" afterPath="$PROJECT_DIR$/SemsApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplication.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetEmergencyContactDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetEmergencyContactDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetRegularSmsTimePickerDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetRegularSmsTimePickerDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetSensorAvailabilityDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetSensorAvailabilityDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetSensorTypeDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetSensorTypeDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetWaringRangeDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/dialog/new_sems/SetWaringRangeDialogFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/utility/SmsSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/ViewPagerFragment.java" afterPath="$PROJECT_DIR$/src/com/example/SemsApp/fragment/viewpager/ViewPagerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/warning_range_variable_view.xml" afterPath="$PROJECT_DIR$/res/layout/warning_range_variable_view.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SemsApp.iws" />
@@ -161,8 +126,8 @@
       <file leaf-file-name="SemsApplication.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55133927" vertical-offset="57" max-vertical-offset="2288">
-              <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.4799107" vertical-offset="57" max-vertical-offset="2288">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -359,158 +324,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SemsApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -822,7 +635,11 @@
       <created>1396942511096</created>
       <updated>1396942511097</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="...">
+      <created>1397309800878</created>
+      <updated>1397309800878</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -840,6 +657,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19215938" sideWeight="0.500684" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32226834" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32210243" sideWeight="0.59076434" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -854,7 +672,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32754183" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32226834" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -884,7 +701,8 @@
     <MESSAGE value="architecture was changed and sms service was simulated." />
     <MESSAGE value="screen on tested." />
     <MESSAGE value="new sems setting and getting dialogs are constructed." />
-    <option name="LAST_COMMIT_MESSAGE" value="new sems setting and getting dialogs are constructed." />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -951,6 +769,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="353" max-vertical-offset="1530">
           <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -958,6 +777,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="531" max-vertical-offset="1258">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,6 +888,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="530" max-vertical-offset="918">
           <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,6 +961,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="2312">
           <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+          <folding>
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3173#3174#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+            <element signature="e#3275#3276#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1162,6 +989,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="577" max-vertical-offset="1241">
           <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+          <folding>
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1203#1204#0" expanded="true" />
+            <element signature="e#1257#1258#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1184,6 +1033,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
           <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,6 +1041,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1145" max-vertical-offset="3689">
           <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1198,6 +1049,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="442">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#619#620#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1275,8 +1129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/SemsApp/application/SemsApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55133927" vertical-offset="57" max-vertical-offset="1785">
-          <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.4799107" vertical-offset="57" max-vertical-offset="2288">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding />
         </state>
       </provider>
