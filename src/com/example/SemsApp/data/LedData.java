@@ -9,12 +9,27 @@ import java.util.HashMap;
  *
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
-public class LedData implements Serializable {
+public class LedData extends BaseData implements Serializable {
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
 	 * */
 	public static LedData getInstance(HashMap<Integer, ?> tokenHashMap) {
 		//필수 : 맵에서 정보를 읽어서 객체 생성
 		return null;
+	}
+
+	@Override
+	protected Object getObject() {
+		return this;
+	}
+
+	@Override
+	protected Class<?> getDataClass() {
+		return LedData.class;
+	}
+
+	@Override
+	protected void copyFrom(Object data) {
+		;
 	}
 }

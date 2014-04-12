@@ -1,9 +1,14 @@
 package com.example.SemsApp.fragment.dialog.new_sems;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.example.SemsApp.R;
 import com.example.SemsApp.utility.SmsSender;
@@ -21,6 +26,13 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 	}
 
 	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		Dialog dialog = super.onCreateDialog(savedInstanceState);
+		dialog.getWindow().setSoftInputMode (WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		return dialog;
+	}
+
+	@Override
 	protected int getTitleStringId() {
 		return R.string.setting_emergency_contact;
 	}
@@ -29,7 +41,7 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 	protected void modifyFixedView(LinearLayout fixedView) {
 		View addedView = getActivity().getLayoutInflater().inflate(R.layout.emergency_contact_fixed_view, null, false);
 		assignSpinnerEditText(addedView);
-		orderSpinner.setAdapter(new OrderSpinnerAdapter(getActivity(), 0));
+		orderSpinner.setAdapter(new EmergencyPhoneNumberOrderSpinnerAdapter(getActivity(), 0));
 		fixedView.addView(addedView);
 	}
 
@@ -45,7 +57,16 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		;
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(emergencyContackEditText.getWindowToken(), 0);
+
+		String emergencyPhoneNumber = emergencyContackEditText.getText().toString();
+		if ( emergencyPhoneNumber.equals("") ) {
+			Toast.makeText(getActivity(), "전화번호를 입력해야 합니다.", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		SmsSender.Order order = ((ArrayAdapter<SmsSender.Order>)orderSpinner.getAdapter()).getItem(orderSpinner.getSelectedItemPosition());
+		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, order, emergencyPhoneNumber);
 	}
 
 	@Override
@@ -59,10 +80,10 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 	}
 }
 
-class OrderSpinnerAdapter extends ArrayAdapter<SmsSender.Order> {
+class EmergencyPhoneNumberOrderSpinnerAdapter extends ArrayAdapter<SmsSender.Order> {
 	private Activity activity;
 
-	public OrderSpinnerAdapter(Activity activity, int resource) {
+	public EmergencyPhoneNumberOrderSpinnerAdapter(Activity activity, int resource) {
 		super(activity, 0);
 		this.activity = activity;
 	}

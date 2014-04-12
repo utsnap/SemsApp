@@ -35,6 +35,7 @@ import static com.example.SemsApp.application.SemsApplication.MachineType.OLD_SE
 public class MainActivity extends Activity implements OldSemsFunctionDialogFragment.Callbacks {
 	public static final int REQUEST_APP_SETTING = 1;
 	public static final String ACTION_DATA_RECEIVED = "ACTION_DATA_RECEIVED";
+	public static final String ACTION_DATA_REQUESTED = "ACTION_DATA_REQUESTED";
 	public static final String EXTRA_MACHINE_TYPE_JSON = "EXTRA_MACHINE_TYPE_JSON";
 	public static final String EXTRA_DATA_JSON = "EXTRA_DATA_JSON";
 	public static final String EXTRA_DATA_CLASS = "EXTRA_DATA_CLASS";

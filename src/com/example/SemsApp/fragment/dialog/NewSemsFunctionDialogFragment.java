@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.example.SemsApp.R;
 import com.example.SemsApp.fragment.dialog.new_sems.*;
+import com.example.SemsApp.preference.PreferenceKeys;
 import com.example.SemsApp.utility.SmsSender;
 
 import java.util.EnumMap;
@@ -63,6 +66,11 @@ public class NewSemsFunctionDialogFragment
 
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+		String newSemsPhonNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PreferenceKeys.NEW_SEMS_PHONE_NUMBER, "");
+		if ( newSemsPhonNumber.equals("") ) {
+			Toast.makeText(getActivity(), "전화번호를 설정하세요..", Toast.LENGTH_SHORT).show();
+			return false;
+		}
 		DialogFragment dialogFragment = null;
 		SmsSender.CommandCategory commandCategory = SmsSender.CommandCategory.getValueOf(groupPosition);
 		if ( commandCategory == SmsSender.CommandCategory.SET ) {
@@ -87,10 +95,13 @@ public class NewSemsFunctionDialogFragment
 			SmsSender.CommandType commandType = SmsSender.CommandType.getValueOf(childPosition);
 			switch ( commandType ) {
 				case EMPTY:
+					SmsSender.sendSms(newSemsPhonNumber, commandCategory);
 					break;
 				case NUM:
+					SmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
 					break;
 				case TIME:
+					SmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
 					break;
 				case LIMT: dialogFragment = new GetWarningRangeDialogFragment();
 					break;
@@ -101,13 +112,17 @@ public class NewSemsFunctionDialogFragment
 			}
 		}
 		else if ( commandCategory == SmsSender.CommandCategory.INFO ) {
-
+			SmsSender.sendSms(newSemsPhonNumber, SmsSender.CommandCategory.INFO);
 		}
 		else {
+			//이런 경우는 없다고 봐야 한다.
 			return false;
 		}
 
 		if ( dialogFragment != null ) {
+			Bundle bundle = new Bundle();
+			bundle.putString(AbsDialogFragment.EXTRA_NEW_SEMS_PHONE_NUMBER, newSemsPhonNumber);
+			dialogFragment.setArguments(bundle);
 			dialogFragment.show(getFragmentManager(), "");
 		}
 		return true;

@@ -13,6 +13,8 @@
 	<uses-permission android:name="android.permission.RECEIVE_MMS"/>
 	<uses-permission android:name="android.permission.WAKE_LOCK"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 
     <application android:label="@string/app_name"
                  android:icon="@drawable/ic_launcher"
@@ -38,6 +40,11 @@
 	    <receiver android:name=".receiver.PseudoSmsReceiver">
 		    <intent-filter>
 		        <action android:name="android.provider.Telephony.PSEUDO_SMS_RECEIVED"/>
+	        </intent-filter>
+	    </receiver>
+	    <receiver android:name=".receiver.OutGoingCallReceiver">
+		    <intent-filter>
+		        <action android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 	        </intent-filter>
 	    </receiver>
     </application>

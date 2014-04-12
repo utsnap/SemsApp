@@ -42,7 +42,10 @@ public class SetSensorTypeDialogFragment extends AbsDoubleSpinnerDialogFragment 
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		;
+		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		SmsSender.SensorNumber sensorNumber = ((ArrayAdapter<SmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
+		SmsSender.SensorType sensorType = ((ArrayAdapter<SmsSender.SensorType>)sensorTypeSpinner.getAdapter()).getItem(sensorTypeSpinner.getSelectedItemPosition());
+		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.KIND, machineNumber, sensorNumber, sensorType.toString());
 	}
 
 	@Override

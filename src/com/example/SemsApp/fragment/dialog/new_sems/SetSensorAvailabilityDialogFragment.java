@@ -42,7 +42,10 @@ public class SetSensorAvailabilityDialogFragment extends AbsDoubleSpinnerDialogF
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		;
+		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		SmsSender.SensorNumber sensorNumber = ((ArrayAdapter<SmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
+		SmsSender.Availability availability = ((ArrayAdapter<SmsSender.Availability>)availabilitySpinner.getAdapter()).getItem(availabilitySpinner.getSelectedItemPosition());
+		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.USE, machineNumber, sensorNumber, availability.toString());
 	}
 
 	@Override

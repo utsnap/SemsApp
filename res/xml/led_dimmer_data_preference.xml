@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<EditTextPreference android:key="first_led_dimmer_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="second_led_dimmer_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="third_led_dimmer_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="forth_led_dimmer_data"
+	                    android:defaultValue=""/>
+</PreferenceScreen>

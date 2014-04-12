@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<EditTextPreference android:key="first_old_sems_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="second_old_sems_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="third_old_sems_data"
+	                    android:defaultValue=""/>
+	<EditTextPreference android:key="forth_old_sems_data"
+	                    android:defaultValue=""/>
+</PreferenceScreen>

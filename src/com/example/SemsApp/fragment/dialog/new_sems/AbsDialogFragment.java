@@ -13,9 +13,12 @@ import com.example.SemsApp.R;
  * Created by Administrator on 2014-04-07.
  */
 public abstract class AbsDialogFragment extends DialogFragment {
+	public static final String EXTRA_NEW_SEMS_PHONE_NUMBER = "extra_new_sems_phone_number";
+
 	private LinearLayout fixedView;
 	private LinearLayout variableView;
 	private View customView;
+	protected String newSemsPhoneNumber;
 
 	private void assignCustomViews(View view) {
 		fixedView = (LinearLayout) view.findViewById(R.id.fixed_view);
@@ -25,6 +28,7 @@ public abstract class AbsDialogFragment extends DialogFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		newSemsPhoneNumber = getArguments().getString(EXTRA_NEW_SEMS_PHONE_NUMBER, "");
 		customView = getActivity().getLayoutInflater().inflate(R.layout.abs_dialog_custom_view, null, false);
 		assignCustomViews(customView);
 		modifyFixedView(fixedView);

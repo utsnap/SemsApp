@@ -1,6 +1,7 @@
 package com.example.SemsApp.utility;
 
 import android.telephony.SmsManager;
+import android.util.Log;
 
 /**
  * Created by Administrator on 14. 3. 23.
@@ -14,7 +15,7 @@ public final class SmsSender {
 		CommandCategory category) {
 
 		String smsText = category.toString();
-		//Log.i("utsnap", smsText);
+		Log.i("utsnap", smsText);
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, smsText, null, null);
 	}
 
@@ -26,7 +27,7 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(order).append(":").append(value);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -38,7 +39,7 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type).append(":").append(value);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -52,7 +53,7 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type).append(machineNumber).append("-").append(sensorNumber).append(":").append(value);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -63,7 +64,7 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -87,7 +88,7 @@ public final class SmsSender {
 		String value) {
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type).append(order).append(":").append(value);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -154,6 +155,17 @@ public final class SmsSender {
 				case DEV: return "개발자 전화번호";
 			}
 			return "뭐지";
+		}
+
+
+		@Override
+		public String toString() {
+			if ( this == EMPTY ) {
+				return "";
+			}
+			else {
+				return super.toString();
+			}
 		}
 	}
 
@@ -291,6 +303,10 @@ public final class SmsSender {
 
 		public String getEmergencyContact() {
 			return toString().concat(" 번째 비상연락처");
+		}
+
+		public String getSmsSendingTime() {
+			return toString().concat(" 번쩨 발송시간");
 		}
 	}
 

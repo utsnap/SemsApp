@@ -1,8 +1,8 @@
 package com.example.SemsApp.data;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
-import java.util.Comparator;
-import java.util.HashMap;
 
 /**
  * Created by Administrator on 14. 3. 20.
@@ -10,10 +10,9 @@ import java.util.HashMap;
  *
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
-public class OldSemsData implements Serializable, Comparable {
+public class OldSemsData extends BaseData implements Serializable {
+	private static final Gson GSON = new Gson();
 
-	private HashMap<Key, ?> tokenHashMap;
-	public int order;
 	public String detail;
 
 	/**
@@ -26,6 +25,12 @@ public class OldSemsData implements Serializable, Comparable {
 	}
 
 	private OldSemsData(int order, String detail) {
+		this.order = order;
+		this.detail = detail;
+	}
+
+	public OldSemsData(String preferenceKey, int order, String detail) {
+		this.preferenceKey = preferenceKey;
 		this.order = order;
 		this.detail = detail;
 	}
@@ -44,15 +49,19 @@ public class OldSemsData implements Serializable, Comparable {
 		}
 	}
 
+	@Override
+	protected Object getObject() {
+		return this;
+	}
 
-	static enum Key {
-		KEY_ORDER_STRING(String.class),
-		KEY_NAME_INTEGER(Integer.class);
+	@Override
+	protected Class<?> getDataClass() {
+		return OldSemsData.class;
+	}
 
-		Class aClass;
-
-		Key(Class aClass) {
-			this.aClass = aClass;
-		}
+	@Override
+	protected void copyFrom(Object data) {
+		OldSemsData oldSemsData = (OldSemsData) data;
+		this.detail = oldSemsData.detail;
 	}
 }

@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * 정태가 작업한다.
  */
-public class CarbonData implements Serializable {
+public class CarbonData extends BaseData implements Serializable {
 
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
@@ -19,5 +19,20 @@ public class CarbonData implements Serializable {
 	public static CarbonData getInstance(HashMap<Integer, ?> tokenHashMap) {
 		//필수 : 맵에서 정보를 읽어서 객체 생성
 		return null;
+	}
+
+	@Override
+	protected Object getObject() {
+		return this;
+	}
+
+	@Override
+	protected Class<?> getDataClass() {
+		return CarbonData.class;
+	}
+
+	@Override
+	protected void copyFrom(Object data) {
+		;
 	}
 }
