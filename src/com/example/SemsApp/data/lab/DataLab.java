@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.example.SemsApp.application.SemsApplication;
-import com.example.SemsApp.data.BaseData;
+import com.example.SemsApp.data.AbsData;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class DataLab<E> extends ArrayList<E> {
 	public DataLab(SemsApplication.MachineType machineType) {
 		super();
 		this.machineType = machineType;
-		machineType.initialArrayList((DataLab<BaseData>) this);
+		machineType.initialArrayList((DataLab<AbsData>) this);
 	}
 
 	/**
@@ -29,8 +29,8 @@ public class DataLab<E> extends ArrayList<E> {
 		Gson gson = new Gson();
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		for ( E e : this ) {
-			BaseData baseData = (BaseData) e;
-			baseData.saveToPreference(preferences);
+			AbsData absData = (AbsData) e;
+			absData.saveToPreference(preferences);
 		}
 	}
 
@@ -41,8 +41,8 @@ public class DataLab<E> extends ArrayList<E> {
 		Gson gson = new Gson();
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		for ( E e : this ) {
-			BaseData baseData = (BaseData) e;
-			baseData.loadFromPreference(preferences);
+			AbsData absData = (AbsData) e;
+			absData.loadFromPreference(preferences);
 		}
 	}
 }

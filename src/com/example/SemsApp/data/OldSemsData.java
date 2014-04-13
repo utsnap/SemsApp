@@ -2,15 +2,13 @@ package com.example.SemsApp.data;
 
 import com.google.gson.Gson;
 
-import java.io.Serializable;
-
 /**
  * Created by Administrator on 14. 3. 20.
  * 옛날 샘스기계의 상태정보를 나타낸다.
  *
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
-public class OldSemsData extends BaseData implements Serializable {
+public class OldSemsData extends AbsData {
 	private static final Gson GSON = new Gson();
 
 	public String detail;
@@ -33,20 +31,6 @@ public class OldSemsData extends BaseData implements Serializable {
 		this.preferenceKey = preferenceKey;
 		this.order = order;
 		this.detail = detail;
-	}
-
-	@Override
-	public int compareTo(Object another) {
-		OldSemsData anotherData = (OldSemsData)another;
-		if ( this.order < anotherData.order ) {
-			return -1;
-		}
-		else if ( this.order == anotherData.order ) {
-			return 0;
-		}
-		else {
-			return 1;
-		}
 	}
 
 	@Override

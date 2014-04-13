@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * 정태가 작업한다.
  */
-public class CarbonData extends BaseData implements Serializable {
+public class CarbonData extends AbsData implements Serializable {
 
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.

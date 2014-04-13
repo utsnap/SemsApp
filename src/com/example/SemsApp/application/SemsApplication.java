@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import com.example.SemsApp.data.*;
 import com.example.SemsApp.data.lab.DataLab;
+import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 
 import java.util.EnumMap;
@@ -14,11 +15,6 @@ import java.util.Stack;
  * 앱에서 사용되는 공유되는 데이터를 선언한다.
  */
 public class SemsApplication extends Application {
-	private static final String newSemsDataFileName = "new_sems_data_file.txt";
-	private static final String oldSemsDataFileName = "old_sems_data_file.txt";
-	private static final String LedDataFileName = "led_sems_data_file.txt";
-	private static final String carbonDataFileName = "carbon_data_file.txt";
-
 	private static final String oldSemsName = "Old\nSems";
 	private static final String newSemsName = "New\nSems";
 	private static final String LedDimmerName = "Led\nDimmer";
@@ -42,12 +38,7 @@ public class SemsApplication extends Application {
 	}
 
 	public enum MachineType {
-		OLD_SEMS {
-			@Override
-			public String getDataFileName() {
-				return oldSemsDataFileName;
-			}
-
+		OLD_SEMS(0) {
 			@Override
 			public Class getDataClass() {
 				return OldSemsData.class;
@@ -59,21 +50,21 @@ public class SemsApplication extends Application {
 			}
 
 			@Override
-			public void initialArrayList(DataLab<BaseData> arrayList) {
+			public void initialArrayList(DataLab<AbsData> arrayList) {
 				arrayList.add(new OldSemsData(PreferenceKeys.FIRST_OLD_SEMS_DATA, 0, ""));
 				arrayList.add(new OldSemsData(PreferenceKeys.SECOND_OLD_SEMS_DATA, 1, ""));
 				arrayList.add(new OldSemsData(PreferenceKeys.THIRD_OLD_SEMS_DATA, 2, ""));
 				arrayList.add(new OldSemsData(PreferenceKeys.FORTH_OLD_SEMS_DATA, 3, ""));
 			}
 
-
-		},
-		NEW_SEMS {
 			@Override
-			public String getDataFileName() {
-				return newSemsDataFileName;
+			public ViewPagerFragment getViewPagerFragment() {
+				return new OldSemsPagerFragment();
 			}
 
+
+		},
+		NEW_SEMS(1) {
 			@Override
 			public Class getDataClass() {
 				return NewSemsData.class;
@@ -85,16 +76,16 @@ public class SemsApplication extends Application {
 			}
 
 			@Override
-			public void initialArrayList(DataLab<BaseData> arrayList) {
+			public void initialArrayList(DataLab<AbsData> arrayList) {
 
+			}
+
+			@Override
+			public ViewPagerFragment getViewPagerFragment() {
+				return new NewSemsPagerFragment();
 			}
 		},
-		LED_DIMMER {
-			@Override
-			public String getDataFileName() {
-				return LedDataFileName;
-			}
-
+		LED_DIMMER(2) {
 			@Override
 			public Class getDataClass() {
 				return LedData.class;
@@ -106,18 +97,18 @@ public class SemsApplication extends Application {
 			}
 
 			@Override
-			public void initialArrayList(DataLab<BaseData> arrayList) {
+			public void initialArrayList(DataLab<AbsData> arrayList) {
 
+			}
+
+			@Override
+			public ViewPagerFragment getViewPagerFragment() {
+				return new LedPagerFragment();
 			}
 
 
 		},
-		CARBON_HEATER {
-			@Override
-			public String getDataFileName() {
-				return carbonDataFileName;
-			}
-
+		CARBON_HEATER(3) {
 			@Override
 			public Class getDataClass() {
 				return CarbonData.class;
@@ -129,16 +120,27 @@ public class SemsApplication extends Application {
 			}
 
 			@Override
-			public void initialArrayList(DataLab<BaseData> arrayList) {
+			public void initialArrayList(DataLab<AbsData> arrayList) {
 
+			}
+
+			@Override
+			public ViewPagerFragment getViewPagerFragment() {
+				return new CarbonPagerFragment();
 			}
 
 
 		};
 
-		public abstract String getDataFileName();
+		public final int index;
+
+		MachineType(int index) {
+			this.index = index;
+		}
+
 		public abstract Class getDataClass();
 		public abstract String getMachineName();
-		public abstract void initialArrayList(DataLab<BaseData> arrayList);
+		public abstract void initialArrayList(DataLab<AbsData> arrayList);
+		public abstract ViewPagerFragment getViewPagerFragment();
 	}
 }

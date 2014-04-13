@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-08.
@@ -42,10 +42,10 @@ public class SetSensorAvailabilityDialogFragment extends AbsDoubleSpinnerDialogF
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
-		SmsSender.SensorNumber sensorNumber = ((ArrayAdapter<SmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
-		SmsSender.Availability availability = ((ArrayAdapter<SmsSender.Availability>)availabilitySpinner.getAdapter()).getItem(availabilitySpinner.getSelectedItemPosition());
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.USE, machineNumber, sensorNumber, availability.toString());
+		NewSemsSmsSender.MachineNumber machineNumber = ((ArrayAdapter<NewSemsSmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.SensorNumber sensorNumber = ((ArrayAdapter<NewSemsSmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.Availability availability = ((ArrayAdapter<NewSemsSmsSender.Availability>)availabilitySpinner.getAdapter()).getItem(availabilitySpinner.getSelectedItemPosition());
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.SET, NewSemsSmsSender.CommandType.USE, machineNumber, sensorNumber, availability.toString());
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class SetSensorAvailabilityDialogFragment extends AbsDoubleSpinnerDialogF
 	}
 }
 
-class SensorAvailabilityArrayAdapter extends ArrayAdapter<SmsSender.Availability> {
+class SensorAvailabilityArrayAdapter extends ArrayAdapter<NewSemsSmsSender.Availability> {
 	private Activity activity;
 
 	public SensorAvailabilityArrayAdapter(Activity activity, int resource) {
@@ -64,12 +64,12 @@ class SensorAvailabilityArrayAdapter extends ArrayAdapter<SmsSender.Availability
 
 	@Override
 	public int getCount() {
-		return SmsSender.Availability.values().length;
+		return NewSemsSmsSender.Availability.values().length;
 	}
 
 	@Override
-	public SmsSender.Availability getItem(int position) {
-		return SmsSender.Availability.values()[position];
+	public NewSemsSmsSender.Availability getItem(int position) {
+		return NewSemsSmsSender.Availability.values()[position];
 	}
 
 	@Override

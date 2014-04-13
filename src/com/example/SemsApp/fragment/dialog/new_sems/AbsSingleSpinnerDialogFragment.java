@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-07.
@@ -35,7 +35,7 @@ public abstract class AbsSingleSpinnerDialogFragment extends AbsDialogFragment {
 	}
 }
 
-class MachineNumberArrayAdapter extends ArrayAdapter<SmsSender.MachineNumber> {
+class MachineNumberArrayAdapter extends ArrayAdapter<NewSemsSmsSender.MachineNumber> {
 	private Activity activity;
 
 	public MachineNumberArrayAdapter(Activity activity, int resource) {
@@ -45,12 +45,12 @@ class MachineNumberArrayAdapter extends ArrayAdapter<SmsSender.MachineNumber> {
 
 	@Override
 	public int getCount() {
-		return SmsSender.MachineNumber.values().length;
+		return NewSemsSmsSender.MachineNumber.values().length;
 	}
 
 	@Override
-	public SmsSender.MachineNumber getItem(int position) {
-		return SmsSender.MachineNumber.values()[position];
+	public NewSemsSmsSender.MachineNumber getItem(int position) {
+		return NewSemsSmsSender.MachineNumber.values()[position];
 	}
 
 	@Override

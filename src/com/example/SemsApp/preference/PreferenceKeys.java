@@ -25,6 +25,24 @@ public class PreferenceKeys {
 	public static final String OLD_SEMS_EMERGENCY_CONTACT4 = "old_sems_emergency_contact4";
 	public static final String OLD_SEMS_EMERGENCY_CONTACT5 = "old_sems_emergency_contact5";
 
+	public static final String NEW_SEMS_EMERGENCY_CONTACT1 = "old_sems_emergency_contact1";
+	public static final String NEW_SEMS_EMERGENCY_CONTACT2 = "old_sems_emergency_contact2";
+	public static final String NEW_SEMS_EMERGENCY_CONTACT3 = "old_sems_emergency_contact3";
+	public static final String NEW_SEMS_EMERGENCY_CONTACT4 = "old_sems_emergency_contact4";
+	public static final String NEW_SEMS_EMERGENCY_CONTACT5 = "old_sems_emergency_contact5";
+
+	public static final String LED_DIMMER_EMERGENCY_CONTACT1 = "old_sems_emergency_contact1";
+	public static final String LED_DIMMER_EMERGENCY_CONTACT2 = "old_sems_emergency_contact2";
+	public static final String LED_DIMMER_EMERGENCY_CONTACT3 = "old_sems_emergency_contact3";
+	public static final String LED_DIMMER_EMERGENCY_CONTACT4 = "old_sems_emergency_contact4";
+	public static final String LED_DIMMER_EMERGENCY_CONTACT5 = "old_sems_emergency_contact5";
+
+	public static final String CARBON_HEATER_EMERGENCY_CONTACT1 = "old_sems_emergency_contact1";
+	public static final String CARBON_HEATER_EMERGENCY_CONTACT2 = "old_sems_emergency_contact2";
+	public static final String CARBON_HEATER_EMERGENCY_CONTACT3 = "old_sems_emergency_contact3";
+	public static final String CARBON_HEATER_EMERGENCY_CONTACT4 = "old_sems_emergency_contact4";
+	public static final String CARBON_HEATER_EMERGENCY_CONTACT5 = "old_sems_emergency_contact5";
+
 	public static final String FIRST_OLD_SEMS_DATA = "first_old_sems_data";
 	public static final String SECOND_OLD_SEMS_DATA = "second_old_sems_data";
 	public static final String THIRD_OLD_SEMS_DATA = "third_old_sems_data";

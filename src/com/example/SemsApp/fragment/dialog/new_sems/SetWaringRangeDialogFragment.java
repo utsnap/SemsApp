@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-08.
@@ -72,9 +72,9 @@ public class SetWaringRangeDialogFragment extends AbsDoubleSpinnerDialogFragment
 		if ( minTemp.length() < 2 ) {
 			minTemp = "0" + minTemp;
 		}
-		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
-		SmsSender.SensorNumber sensorNumber = ((ArrayAdapter<SmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.LIMT, machineNumber, sensorNumber, maxTemp + minTemp);
+		NewSemsSmsSender.MachineNumber machineNumber = ((ArrayAdapter<NewSemsSmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.SensorNumber sensorNumber = ((ArrayAdapter<NewSemsSmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.SET, NewSemsSmsSender.CommandType.LIMT, machineNumber, sensorNumber, maxTemp + minTemp);
 	}
 
 	@Override

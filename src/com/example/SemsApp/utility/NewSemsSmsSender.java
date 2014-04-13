@@ -2,12 +2,15 @@ package com.example.SemsApp.utility;
 
 import android.telephony.SmsManager;
 import android.util.Log;
+import com.example.SemsApp.data.new_sems.*;
+
+import java.io.FileInputStream;
 
 /**
  * Created by Administrator on 14. 3. 23.
  * 기계에 문자를 보내는 기능을 구현한다.
  */
-public final class SmsSender {
+public final class NewSemsSmsSender {
 	private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
 
 	public static final void sendSms(
@@ -76,7 +79,7 @@ public final class SmsSender {
 
 		StringBuilder stringBuilder = new StringBuilder("");
 		stringBuilder.append(category).append(" ").append(type).append(machineNumber);
-		//Log.i("utsnap", stringBuilder.toString());
+		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
 
@@ -93,9 +96,49 @@ public final class SmsSender {
 	}
 
 	public enum CommandCategory {
-		SET,
-		GET,
-		INFO;
+		SET {
+			@Override
+			public Object getNewSemsData(String SmsBodyf) {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return null;
+			}
+		},
+		GET {
+			@Override
+			public Object getNewSemsData(String SmsBodyf) {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return null;
+			}
+		},
+		INFO {
+			@Override
+			public Object getNewSemsData(String SmsBody) {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsInfoData.class;
+			}
+		};
+
+		/**
+		 * 문자를 받았을때, 카데고리에 맞는 데이터를 생성한다.
+		 * */
+		public abstract Object getNewSemsData(String SmsBody);
+
+		/**
+		 * 생성되는 객체의 클래스를 반환한다.
+		 * */
+		public abstract Class getNewSemsDataClass();
 
 		public static final CommandCategory getValueOf(int index) {
 			switch ( index ) {
@@ -104,6 +147,15 @@ public final class SmsSender {
 				case 2 : return INFO;
 			}
 			return null;
+		}
+
+		public static final CommandCategory findCommandCategory(String firstLine) {
+			if ( CommandType.findCommandType(firstLine) != null ) {
+				return GET;
+			}
+			else {
+				return INFO;
+			}
 		}
 
 		public String getSummary() {
@@ -120,14 +172,104 @@ public final class SmsSender {
 	}
 
 	public enum CommandType {
-		EMPTY,
-		NUM,
-		TIME,
-		LIMT,
-		KIND,
-		USE,
-		SERVER,
-		DEV;
+		EMPTY {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsBaseData.class;
+			}
+		},
+		NUM {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsEmergencyContactData.class;
+			}
+		},
+		TIME {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsSmsSendingTimeData.class;
+			}
+		},
+		LIMT {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsLimitData.class;
+			}
+		},
+		KIND {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsKindData.class;
+			}
+		},
+		USE {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return NewSemsUseData.class;
+			}
+		},
+		SERVER {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return null;
+			}
+		},
+		DEV {
+			@Override
+			public Object getNewSemsData() {
+				return null;
+			}
+
+			@Override
+			public Class getNewSemsDataClass() {
+				return null;
+			}
+		};
+
+		/**
+		 * 문자를 받았을때, 타입에 맞는 데이터를 생성한다.
+		 * */
+		public abstract Object getNewSemsData();
+
+		/**
+		 * 생성되는 객체의 클래스를 반환한다.
+		 * */
+		public abstract Class getNewSemsDataClass();
 
 		public static final CommandType getValueOf(int index) {
 			switch ( index ) {
@@ -141,6 +283,35 @@ public final class SmsSender {
 				case 7 : return DEV;
 			}
 			return null;
+		}
+
+		/**
+		 * 기계로 받은 문자에서 첫번째 라인을 추출하여,
+		 * 그 문자가 어떤 타입인지를 알아낸다.
+		 * */
+		public static final CommandType findCommandType(String firstLine) {
+			CommandType commandType = null;
+			if ( firstLine.startsWith("장비") || firstLine.startsWith("명령어") ) {
+				commandType = EMPTY;
+			}
+			else if ( firstLine.startsWith("1:") ) {
+				commandType = NUM;
+			}
+			else if ( firstLine.startsWith("TIME") ) {
+				commandType = TIME;
+			}
+			else if ( firstLine.startsWith("S") ) {
+				if ( firstLine.endsWith("LIMT") ) {
+					commandType = LIMT;
+				}
+				else if ( firstLine.endsWith("KIND") ) {
+					commandType = KIND;
+				}
+				else if ( firstLine.endsWith("USE") ) {
+					commandType = USE;
+				}
+			}
+			return commandType;
 		}
 
 		public String getSummary() {
@@ -324,6 +495,15 @@ public final class SmsSender {
 			this.summary = summary;
 		}
 
+		public static final SensorType valueOf(int number) {
+			switch ( number ) {
+				case 0 : return ETCETERA;
+				case 1 : return TEMPERATURE;
+				case 2 : return HUMIDITY;
+				case 3 : return MINUS_NUMBER;
+			}
+			return null;
+		}
 
 		@Override
 		public String toString() {
@@ -341,6 +521,14 @@ public final class SmsSender {
 
 		private final int number;
 		private final String summary;
+
+		public static final Availability valueOf(int number) {
+			switch ( number ) {
+				case 0 : return NOT_AVAILABLE;
+				case 1 : return AVAILABLE;
+			}
+			return null;
+		}
 
 		Availability(int number, String summary) {
 			this.number = number;

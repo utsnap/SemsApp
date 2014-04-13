@@ -9,7 +9,7 @@ import java.util.HashMap;
  *
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
-public class LedData extends BaseData implements Serializable {
+public class LedData extends AbsData implements Serializable {
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
 	 * */

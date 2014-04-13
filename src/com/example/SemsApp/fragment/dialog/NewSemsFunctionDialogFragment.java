@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.SemsApp.R;
 import com.example.SemsApp.fragment.dialog.new_sems.*;
 import com.example.SemsApp.preference.PreferenceKeys;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 import java.util.EnumMap;
 
@@ -30,7 +30,7 @@ public class NewSemsFunctionDialogFragment
 	, ExpandableListView.OnGroupCollapseListener {
 
 	private ExpandableListView commandExpandableListView;
-	private EnumMap<SmsSender.CommandCategory, SmsSender.CommandType[]> commandTypesEnumMap;
+	private EnumMap<NewSemsSmsSender.CommandCategory, NewSemsSmsSender.CommandType[]> commandTypesEnumMap;
 
 	private void assignExpandableListView(View view) {
 		commandExpandableListView = (ExpandableListView) view.findViewById(R.id.commandExpandableListView);
@@ -72,9 +72,9 @@ public class NewSemsFunctionDialogFragment
 			return false;
 		}
 		DialogFragment dialogFragment = null;
-		SmsSender.CommandCategory commandCategory = SmsSender.CommandCategory.getValueOf(groupPosition);
-		if ( commandCategory == SmsSender.CommandCategory.SET ) {
-			SmsSender.CommandType commandType = SmsSender.CommandType.getValueOf(childPosition);
+		NewSemsSmsSender.CommandCategory commandCategory = NewSemsSmsSender.CommandCategory.getValueOf(groupPosition);
+		if ( commandCategory == NewSemsSmsSender.CommandCategory.SET ) {
+			NewSemsSmsSender.CommandType commandType = NewSemsSmsSender.CommandType.getValueOf(childPosition);
 			switch ( commandType ) {
 				case EMPTY:
 					break;
@@ -91,17 +91,17 @@ public class NewSemsFunctionDialogFragment
 			}
 
 		}
-		else if ( commandCategory == SmsSender.CommandCategory.GET ) {
-			SmsSender.CommandType commandType = SmsSender.CommandType.getValueOf(childPosition);
+		else if ( commandCategory == NewSemsSmsSender.CommandCategory.GET ) {
+			NewSemsSmsSender.CommandType commandType = NewSemsSmsSender.CommandType.getValueOf(childPosition);
 			switch ( commandType ) {
 				case EMPTY:
-					SmsSender.sendSms(newSemsPhonNumber, commandCategory);
+					NewSemsSmsSender.sendSms(newSemsPhonNumber, commandCategory);
 					break;
 				case NUM:
-					SmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
+					NewSemsSmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
 					break;
 				case TIME:
-					SmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
+					NewSemsSmsSender.sendSms(newSemsPhonNumber, commandCategory, commandType);
 					break;
 				case LIMT: dialogFragment = new GetWarningRangeDialogFragment();
 					break;
@@ -111,8 +111,8 @@ public class NewSemsFunctionDialogFragment
 					break;
 			}
 		}
-		else if ( commandCategory == SmsSender.CommandCategory.INFO ) {
-			SmsSender.sendSms(newSemsPhonNumber, SmsSender.CommandCategory.INFO);
+		else if ( commandCategory == NewSemsSmsSender.CommandCategory.INFO ) {
+			NewSemsSmsSender.sendSms(newSemsPhonNumber, NewSemsSmsSender.CommandCategory.INFO);
 		}
 		else {
 			//이런 경우는 없다고 봐야 한다.
@@ -158,28 +158,28 @@ public class NewSemsFunctionDialogFragment
 
 		@Override
 		public int getGroupCount() {
-			return SmsSender.CommandCategory.values().length;
+			return NewSemsSmsSender.CommandCategory.values().length;
 		}
 
 		//개발자, 서버관련 사항은 숨긴다.
 		@Override
 		public int getChildrenCount(int groupPosition) {
-			if ( groupPosition == SmsSender.CommandCategory.values().length - 1 ) {
+			if ( groupPosition == NewSemsSmsSender.CommandCategory.values().length - 1 ) {
 				return 1;
 			}
 			else {
-				return SmsSender.CommandType.values().length - 2;
+				return NewSemsSmsSender.CommandType.values().length - 2;
 			}
 		}
 
 		@Override
 		public Object getGroup(int groupPosition) {
-			return SmsSender.CommandCategory.values()[groupPosition];
+			return NewSemsSmsSender.CommandCategory.values()[groupPosition];
 		}
 
 		@Override
 		public Object getChild(int groupPosition, int childPosition) {
-			return SmsSender.CommandType.values()[childPosition];
+			return NewSemsSmsSender.CommandType.values()[childPosition];
 		}
 
 		@Override
@@ -203,7 +203,7 @@ public class NewSemsFunctionDialogFragment
 				convertView = activity.getLayoutInflater().inflate(R.layout.expandable_list_view_group_item, null, false);
 			}
 			TextView textView = (TextView) convertView.findViewById(R.id.groupTextView);
-			textView.setText(SmsSender.CommandCategory.values()[groupPosition].getSummary());
+			textView.setText(NewSemsSmsSender.CommandCategory.values()[groupPosition].getSummary());
 			return convertView;
 		}
 
@@ -223,7 +223,7 @@ public class NewSemsFunctionDialogFragment
 				textView.setText("현재 센서값 조회");
 			}
 			else {
-				textView.setText(SmsSender.CommandType.values()[childPosition].getSummary().concat(" ").concat(SmsSender.CommandCategory.values()[groupPosition].getSummary()));
+				textView.setText(NewSemsSmsSender.CommandType.values()[childPosition].getSummary().concat(" ").concat(NewSemsSmsSender.CommandCategory.values()[groupPosition].getSummary()));
 			}
 			return convertView;
 		}

@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-08.
@@ -27,8 +27,8 @@ public class GetSensorAvailabilityDialogFragment extends AbsSingleSpinnerDialogF
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.GET, SmsSender.CommandType.USE, machineNumber.toString());
+		NewSemsSmsSender.MachineNumber machineNumber = ((ArrayAdapter<NewSemsSmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.GET, NewSemsSmsSender.CommandType.USE, machineNumber.toString());
 	}
 
 	@Override

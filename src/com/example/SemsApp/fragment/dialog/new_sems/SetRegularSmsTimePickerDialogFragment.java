@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-07.
@@ -48,7 +48,7 @@ public class SetRegularSmsTimePickerDialogFragment extends AbsDialogFragment {
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		SmsSender.Order order = ((ArrayAdapter<SmsSender.Order>)orderSpinner.getAdapter()).getItem(orderSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.Order order = ((ArrayAdapter<NewSemsSmsSender.Order>)orderSpinner.getAdapter()).getItem(orderSpinner.getSelectedItemPosition());
 		String hour = timePicker.getCurrentHour().toString();
 		if ( hour.length() == 1 ) {
 			hour = "0" + hour;
@@ -57,7 +57,7 @@ public class SetRegularSmsTimePickerDialogFragment extends AbsDialogFragment {
 		if ( minute.length() == 1 ) {
 			minute = "0" + minute;
 		}
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.TIME, order, hour + minute);
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.SET, NewSemsSmsSender.CommandType.TIME, order, hour + minute);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class SetRegularSmsTimePickerDialogFragment extends AbsDialogFragment {
 	}
 }
 
-class RegularSmsTimeOrderArrayAdapter extends ArrayAdapter<SmsSender.Order> {
+class RegularSmsTimeOrderArrayAdapter extends ArrayAdapter<NewSemsSmsSender.Order> {
 	private Activity activity;
 
 	public RegularSmsTimeOrderArrayAdapter(Activity activity, int resource) {
@@ -81,12 +81,12 @@ class RegularSmsTimeOrderArrayAdapter extends ArrayAdapter<SmsSender.Order> {
 
 	@Override
 	public int getCount() {
-		return SmsSender.Order.values().length - 3;
+		return NewSemsSmsSender.Order.values().length - 3;
 	}
 
 	@Override
-	public SmsSender.Order getItem(int position) {
-		return SmsSender.Order.values()[position];
+	public NewSemsSmsSender.Order getItem(int position) {
+		return NewSemsSmsSender.Order.values()[position];
 	}
 
 	@Override

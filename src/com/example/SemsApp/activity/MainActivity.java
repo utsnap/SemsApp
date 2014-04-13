@@ -36,6 +36,9 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	public static final int REQUEST_APP_SETTING = 1;
 	public static final String ACTION_DATA_RECEIVED = "ACTION_DATA_RECEIVED";
 	public static final String ACTION_DATA_REQUESTED = "ACTION_DATA_REQUESTED";
+	public static final String TYPE_COMMAND_CATEGORY_DATA = "TYPE_COMMAND_CATEGORY_DATA";
+	public static final String TYPE_COMMAND_TYPE_DATA = "TYPE_COMMAND_TYPE_DATA";
+
 	public static final String EXTRA_MACHINE_TYPE_JSON = "EXTRA_MACHINE_TYPE_JSON";
 	public static final String EXTRA_DATA_JSON = "EXTRA_DATA_JSON";
 	public static final String EXTRA_DATA_CLASS = "EXTRA_DATA_CLASS";
@@ -51,7 +54,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 	private boolean bModified = false;
 	private MachineType modifiedMachine = null;
-	private int modifiedIndex = -1;
+	private int modifiedDataIndex = -1;
 	private Object addedData = null;
 
 	/**
@@ -90,20 +93,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		viewPagerFragmentEnumMap = new EnumMap<MachineType, ViewPagerFragment>(MachineType.class);
 		for ( MachineType machineType : MachineType.values() ) {
 			ViewPagerFragment viewPagerFragment = null;
-			switch( machineType ) {
-				case OLD_SEMS:
-					viewPagerFragment = new OldSemsPagerFragment();
-					break;
-				case NEW_SEMS:
-					viewPagerFragment = new NewSemsPagerFragment();
-					break;
-				case LED_DIMMER:
-					viewPagerFragment = new LedPagerFragment();
-					break;
-				case CARBON_HEATER:
-					viewPagerFragment = new CarbonPagerFragment();
-					break;
-			}
+			viewPagerFragment = machineType.getViewPagerFragment();
 			viewPagerFragmentEnumMap.put(machineType, viewPagerFragment);
 			ActionBar.Tab tab = actionBar.newTab()
 				.setText(machineType.getMachineName())
@@ -139,29 +129,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		//필수 : 데이터를 받았는지 확인하고 적절한 처리를 한다.
 		Intent intent = getIntent();
 		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
-			bModified = true;
-			String machintTypeJson = intent.getStringExtra(EXTRA_MACHINE_TYPE_JSON);
-			modifiedMachine = GSON.fromJson(machintTypeJson, MachineType.class);
-			Class dataClass = (Class) intent.getSerializableExtra(EXTRA_DATA_CLASS);
-			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
-			modifiedIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
-
-			//필수 : 받은 데이터의 탭을 활성화시킨다.
-			int tabIndex = -1;
-			for ( int i = 0; i < actionBar.getTabCount(); i++ ) {
-				if ( actionBar.getTabAt(i).getTag().equals(modifiedMachine) ) {
-					tabIndex = i;
-					break;
-				}
-			}
-			actionBar.setSelectedNavigationItem(tabIndex);
-			//완료
-
-			//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
-			dataLabEnumMap.get(modifiedMachine).add(GSON.fromJson(dataJson, dataClass));
-			addedData = dataLabEnumMap.get(modifiedMachine).get(dataLabEnumMap.get(modifiedMachine).size() - 1);
-			Collections.sort(dataLabEnumMap.get(modifiedMachine));
-			//완료
+			dataReceived(intent);
 		}
 
 		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
@@ -184,31 +152,9 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		);
 		//완료
 
+		//데이터를 받았을 경우에는 적당한 처리를 한다.
 		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
-			//Log.i("utsnap", "onNewIntent");
-			bModified = true;
-			String machintTypeJson = intent.getStringExtra(EXTRA_MACHINE_TYPE_JSON);
-			modifiedMachine = GSON.fromJson(machintTypeJson, MachineType.class);
-			Class dataClass = (Class) intent.getSerializableExtra(EXTRA_DATA_CLASS);
-			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
-			modifiedIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
-
-			//필수 : 받은 데이터의 탭을 활성화시킨다.
-			int tabIndex = -1;
-			for ( int i = 0; i < actionBar.getTabCount(); i++ ) {
-				if ( actionBar.getTabAt(i).getTag().equals(modifiedMachine) ) {
-					tabIndex = i;
-					break;
-				}
-			}
-			actionBar.setSelectedNavigationItem(tabIndex);
-			//완료
-
-			//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
-			dataLabEnumMap.get(modifiedMachine).add(GSON.fromJson(dataJson, dataClass));
-			addedData = dataLabEnumMap.get(modifiedMachine).get(dataLabEnumMap.get(modifiedMachine).size() - 1);
-			Collections.sort(dataLabEnumMap.get(modifiedMachine));
-			//완료
+			dataReceived(intent);
 		}
 	}
 
@@ -229,11 +175,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	protected void onStart() {
 		super.onStart();
 		if ( bModified ) {
-			dataLabChanged(modifiedMachine, addedData);
-			bModified = false;
-			modifiedMachine = null;
-			modifiedIndex = -1;
-			addedData = null;
+			receivedDataProcessed();
 		}
 	}
 
@@ -241,11 +183,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	protected void onResume() {
 		super.onResume();
 		if ( bModified ) {
-			dataLabChanged(modifiedMachine, addedData);
-			bModified = false;
-			modifiedMachine = null;
-			modifiedIndex = -1;
-			addedData = null;
+			receivedDataProcessed();
 		}
 	}
 
@@ -345,6 +283,47 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		viewPagerFragmentEnumMap.get(machineType).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter());
 		int targetIndex = dataLabEnumMap.get(machineType).indexOf(addedData);
 		viewPagerFragmentEnumMap.get(machineType).getViewPager().setCurrentItem(targetIndex, true);
+	}
+
+	public void dataLabChanged(MachineType machineType, int selectedIndex) {
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter().notifyDataSetChanged();
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter());
+		viewPagerFragmentEnumMap.get(machineType).getViewPager().setCurrentItem(selectedIndex, true);
+	}
+
+	/**
+	 * 데이터를 받았을 경우에 수행하는 메소드
+	 * 데이터 객체를 얻어내서, 해당 data lab에 저장하고,
+	 * 해당 기계의 탭을 선택하고,
+	 * 뷰페이저를 업데이트한다.
+	 * */
+	private void dataReceived(Intent intent) {
+		bModified = true;
+		String machintTypeJson = intent.getStringExtra(EXTRA_MACHINE_TYPE_JSON);
+		modifiedMachine = GSON.fromJson(machintTypeJson, MachineType.class);
+		Class dataClass = (Class) intent.getSerializableExtra(EXTRA_DATA_CLASS);
+		String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
+		modifiedDataIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
+
+		//필수 : 받은 데이터의 탭을 활성화시킨다.
+		actionBar.setSelectedNavigationItem(modifiedMachine.index);
+		//완료
+
+		//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
+		dataLabEnumMap.get(modifiedMachine).set(modifiedDataIndex, GSON.fromJson(dataJson, dataClass));
+		//완료
+	}
+
+	/**
+	 * 데이터를 받은 다음에 수행되는 메소드.
+	 * 데이터를 받았을때 사용한 변수들을 원래대로 초기화한다.
+	 * */
+	private void receivedDataProcessed() {
+		dataLabChanged(modifiedMachine, modifiedDataIndex);
+		bModified = false;
+		modifiedMachine = null;
+		modifiedDataIndex = -1;
+		addedData = null;
 	}
 
 	private class PreferenceChangeHandler implements SharedPreferences.OnSharedPreferenceChangeListener {

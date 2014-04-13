@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-07.
@@ -65,8 +65,8 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 			Toast.makeText(getActivity(), "전화번호를 입력해야 합니다.", Toast.LENGTH_SHORT).show();
 			return;
 		}
-		SmsSender.Order order = ((ArrayAdapter<SmsSender.Order>)orderSpinner.getAdapter()).getItem(orderSpinner.getSelectedItemPosition());
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, order, emergencyPhoneNumber);
+		NewSemsSmsSender.Order order = ((ArrayAdapter<NewSemsSmsSender.Order>)orderSpinner.getAdapter()).getItem(orderSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.SET, order, emergencyPhoneNumber);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
 	}
 }
 
-class EmergencyPhoneNumberOrderSpinnerAdapter extends ArrayAdapter<SmsSender.Order> {
+class EmergencyPhoneNumberOrderSpinnerAdapter extends ArrayAdapter<NewSemsSmsSender.Order> {
 	private Activity activity;
 
 	public EmergencyPhoneNumberOrderSpinnerAdapter(Activity activity, int resource) {
@@ -90,12 +90,12 @@ class EmergencyPhoneNumberOrderSpinnerAdapter extends ArrayAdapter<SmsSender.Ord
 
 	@Override
 	public int getCount() {
-		return SmsSender.Order.values().length;
+		return NewSemsSmsSender.Order.values().length;
 	}
 
 	@Override
-	public SmsSender.Order getItem(int position) {
-		return SmsSender.Order.values()[position];
+	public NewSemsSmsSender.Order getItem(int position) {
+		return NewSemsSmsSender.Order.values()[position];
 	}
 
 	@Override

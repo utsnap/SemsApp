@@ -9,14 +9,14 @@ import java.io.Serializable;
 /**
  * Created by Administrator on 2014-04-10.
  */
-public abstract class BaseData implements Comparable, DataManageable, Serializable {
+public abstract class AbsData implements Comparable, DataManageable, Serializable {
 	protected static final Gson GSON = new Gson();
 	protected String preferenceKey;
 	public int order;
 
 	@Override
 	public int compareTo(Object another) {
-		BaseData anotherData = (BaseData)another;
+		AbsData anotherData = (AbsData)another;
 		if ( this.order < anotherData.order ) {
 			return -1;
 		}

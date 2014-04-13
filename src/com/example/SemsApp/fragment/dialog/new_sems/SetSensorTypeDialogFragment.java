@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.SemsApp.R;
-import com.example.SemsApp.utility.SmsSender;
+import com.example.SemsApp.utility.NewSemsSmsSender;
 
 /**
  * Created by Administrator on 2014-04-08.
@@ -42,10 +42,10 @@ public class SetSensorTypeDialogFragment extends AbsDoubleSpinnerDialogFragment 
 
 	@Override
 	protected void positiveButtonClicked(DialogInterface dialog, int which) {
-		SmsSender.MachineNumber machineNumber = ((ArrayAdapter<SmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
-		SmsSender.SensorNumber sensorNumber = ((ArrayAdapter<SmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
-		SmsSender.SensorType sensorType = ((ArrayAdapter<SmsSender.SensorType>)sensorTypeSpinner.getAdapter()).getItem(sensorTypeSpinner.getSelectedItemPosition());
-		SmsSender.sendSms(newSemsPhoneNumber, SmsSender.CommandCategory.SET, SmsSender.CommandType.KIND, machineNumber, sensorNumber, sensorType.toString());
+		NewSemsSmsSender.MachineNumber machineNumber = ((ArrayAdapter<NewSemsSmsSender.MachineNumber>)machineNumberSpinner.getAdapter()).getItem(machineNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.SensorNumber sensorNumber = ((ArrayAdapter<NewSemsSmsSender.SensorNumber>)sensorNumberSpinner.getAdapter()).getItem(sensorNumberSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.SensorType sensorType = ((ArrayAdapter<NewSemsSmsSender.SensorType>)sensorTypeSpinner.getAdapter()).getItem(sensorTypeSpinner.getSelectedItemPosition());
+		NewSemsSmsSender.sendSms(newSemsPhoneNumber, NewSemsSmsSender.CommandCategory.SET, NewSemsSmsSender.CommandType.KIND, machineNumber, sensorNumber, sensorType.toString());
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class SetSensorTypeDialogFragment extends AbsDoubleSpinnerDialogFragment 
 	}
 }
 
-class SensorTypeArrayAdapter extends ArrayAdapter<SmsSender.SensorType> {
+class SensorTypeArrayAdapter extends ArrayAdapter<NewSemsSmsSender.SensorType> {
 	private Activity activity;
 
 	public SensorTypeArrayAdapter(Activity activity, int resource) {
@@ -64,12 +64,12 @@ class SensorTypeArrayAdapter extends ArrayAdapter<SmsSender.SensorType> {
 
 	@Override
 	public int getCount() {
-		return SmsSender.SensorType.values().length;
+		return NewSemsSmsSender.SensorType.values().length;
 	}
 
 	@Override
-	public SmsSender.SensorType getItem(int position) {
-		return SmsSender.SensorType.values()[position];
+	public NewSemsSmsSender.SensorType getItem(int position) {
+		return NewSemsSmsSender.SensorType.values()[position];
 	}
 
 	@Override
