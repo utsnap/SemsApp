@@ -12,7 +12,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.SemsApp.R;
-import com.example.SemsApp.fragment.dialog.new_sems.*;
+import com.example.SemsApp.fragment.dialog.new_sems.function.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
@@ -121,7 +121,7 @@ public class NewSemsFunctionDialogFragment
 
 		if ( dialogFragment != null ) {
 			Bundle bundle = new Bundle();
-			bundle.putString(AbsDialogFragment.EXTRA_NEW_SEMS_PHONE_NUMBER, newSemsPhonNumber);
+			bundle.putString(AbsFunctionDialogFragment.EXTRA_NEW_SEMS_PHONE_NUMBER, newSemsPhonNumber);
 			dialogFragment.setArguments(bundle);
 			dialogFragment.show(getFragmentManager(), "");
 		}

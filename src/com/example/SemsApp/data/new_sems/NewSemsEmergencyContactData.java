@@ -4,12 +4,13 @@ package com.example.SemsApp.data.new_sems;
 
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 
 /**
  * Created by vaio-pc on 2014-04-13.
  */
-public class NewSemsEmergencyContactData {
+public class NewSemsEmergencyContactData extends AbsNewSemsData implements Serializable {
 	public static final String NONE = "설정안됨";
 	public final EnumMap<NewSemsSmsSender.Order, String> emergencyContactEnumMap;
 
@@ -28,5 +29,10 @@ public class NewSemsEmergencyContactData {
 				emergencyContactEnumMap.put(NewSemsSmsSender.Order.valueOf(i + 1), strings[1]);
 			}
 		}
+	}
+
+	@Override
+	public String getDialogTitle() {
+		return "New Sems 비상연락처";
 	}
 }

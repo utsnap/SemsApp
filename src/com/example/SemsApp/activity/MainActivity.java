@@ -35,11 +35,13 @@ import static com.example.SemsApp.application.SemsApplication.MachineType.OLD_SE
 public class MainActivity extends Activity implements OldSemsFunctionDialogFragment.Callbacks {
 	public static final int REQUEST_APP_SETTING = 1;
 	public static final String ACTION_DATA_RECEIVED = "ACTION_DATA_RECEIVED";
+	public static final String ACTION_NEW_SEMS_DATA_RECEIVED = "ACTION_NEW_SEMS_DATA_RECEIVED";
 	public static final String ACTION_DATA_REQUESTED = "ACTION_DATA_REQUESTED";
 	public static final String TYPE_COMMAND_CATEGORY_DATA = "TYPE_COMMAND_CATEGORY_DATA";
 	public static final String TYPE_COMMAND_TYPE_DATA = "TYPE_COMMAND_TYPE_DATA";
 
 	public static final String EXTRA_MACHINE_TYPE_JSON = "EXTRA_MACHINE_TYPE_JSON";
+	public static final String EXTRA_NEW_SEMS_DATA = "EXTRA_NEW_SEMS_DATA";
 	public static final String EXTRA_DATA_JSON = "EXTRA_DATA_JSON";
 	public static final String EXTRA_DATA_CLASS = "EXTRA_DATA_CLASS";
 	public static final String EXTRA_DATA_LAB_INDEX = "EXTRA_DATA_LAB_INDEX";
@@ -155,6 +157,10 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		//데이터를 받았을 경우에는 적당한 처리를 한다.
 		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
 			dataReceived(intent);
+		}
+		else if ( intent.getAction().equals(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
+			// 필수 : new sems의 GET, SET 요청에대한 응답을 한다.
+			// 단순한 다이얼로그를 띄워야 한다.
 		}
 	}
 

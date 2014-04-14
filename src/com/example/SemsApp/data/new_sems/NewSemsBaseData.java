@@ -1,10 +1,12 @@
 package com.example.SemsApp.data.new_sems;
 
+import java.io.Serializable;
+
 /**
  * Created by vaio-pc on 2014-04-13.
  * 아직 미완성이다..
  */
-public class NewSemsBaseData {
+public class NewSemsBaseData extends AbsNewSemsData implements Serializable {
 	public final String machine;
 	public final String sensor;
 	public final String smsSendingTime1;
@@ -33,5 +35,10 @@ public class NewSemsBaseData {
 			smsSendingTime2 = smsLines[3];
 			commands = smsLines[4];
 		}
+	}
+
+	@Override
+	public String getDialogTitle() {
+		return "New Sems 기본정보";
 	}
 }

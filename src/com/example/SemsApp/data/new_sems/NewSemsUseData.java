@@ -3,12 +3,13 @@ package com.example.SemsApp.data.new_sems;
 
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 
 /**
  * Created by vaio-pc on 2014-04-13.
  */
-public class NewSemsUseData {
+public class NewSemsUseData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
 	public EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.Availability> sensorAvailabilityEnumMap;
 
@@ -31,5 +32,10 @@ public class NewSemsUseData {
 			sensorAvailabilityEnumMap.put(NewSemsSmsSender.SensorNumber.valueOf(i), NewSemsSmsSender.Availability.valueOf(sensorAvailabilityNumber));
 		}
 		//완료
+	}
+
+	@Override
+	public String getDialogTitle() {
+		return "New Sems " + machineNumber.getDetailName() +  " 사용여부";
 	}
 }

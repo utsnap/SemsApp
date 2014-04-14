@@ -1,4 +1,4 @@
-package com.example.SemsApp.fragment.dialog.new_sems;
+package com.example.SemsApp.fragment.dialog.new_sems.function;
 
 import android.app.Dialog;
 import android.content.Context;

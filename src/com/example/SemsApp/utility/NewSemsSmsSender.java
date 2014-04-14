@@ -174,8 +174,8 @@ public final class NewSemsSmsSender {
 	public enum CommandType {
 		EMPTY {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsBaseData.getInstance(smsBody);
 			}
 
 			@Override
@@ -185,8 +185,8 @@ public final class NewSemsSmsSender {
 		},
 		NUM {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsEmergencyContactData.getInstance(smsBody);
 			}
 
 			@Override
@@ -196,8 +196,8 @@ public final class NewSemsSmsSender {
 		},
 		TIME {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsSmsSendingTimeData.getInstance(smsBody);
 			}
 
 			@Override
@@ -207,8 +207,8 @@ public final class NewSemsSmsSender {
 		},
 		LIMT {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsLimitData.getInstance(smsBody);
 			}
 
 			@Override
@@ -218,8 +218,8 @@ public final class NewSemsSmsSender {
 		},
 		KIND {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsKindData.getInstance(smsBody);
 			}
 
 			@Override
@@ -229,8 +229,8 @@ public final class NewSemsSmsSender {
 		},
 		USE {
 			@Override
-			public Object getNewSemsData() {
-				return null;
+			public Object getNewSemsData(String smsBody) {
+				return NewSemsUseData.getInstance(smsBody);
 			}
 
 			@Override
@@ -240,7 +240,7 @@ public final class NewSemsSmsSender {
 		},
 		SERVER {
 			@Override
-			public Object getNewSemsData() {
+			public Object getNewSemsData(String smsBody) {
 				return null;
 			}
 
@@ -251,7 +251,7 @@ public final class NewSemsSmsSender {
 		},
 		DEV {
 			@Override
-			public Object getNewSemsData() {
+			public Object getNewSemsData(String smsBody) {
 				return null;
 			}
 
@@ -264,7 +264,7 @@ public final class NewSemsSmsSender {
 		/**
 		 * 문자를 받았을때, 타입에 맞는 데이터를 생성한다.
 		 * */
-		public abstract Object getNewSemsData();
+		public abstract Object getNewSemsData(String smsBody);
 
 		/**
 		 * 생성되는 객체의 클래스를 반환한다.

@@ -1,4 +1,4 @@
-package com.example.SemsApp.fragment.dialog.new_sems;
+package com.example.SemsApp.fragment.dialog.new_sems.function;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -16,7 +16,7 @@ import com.example.SemsApp.utility.NewSemsSmsSender;
 /**
  * Created by Administrator on 2014-04-07.
  */
-public class SetEmergencyContactDialogFragment extends AbsDialogFragment {
+public class SetEmergencyContactDialogFragment extends AbsFunctionDialogFragment {
 	private Spinner orderSpinner;
 	private EditText emergencyContackEditText;
 

@@ -2,6 +2,7 @@ package com.example.SemsApp.data.new_sems;
 
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.EnumMap;
 import java.util.GregorianCalendar;
@@ -9,7 +10,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by vaio-pc on 2014-04-13.
  */
-public class NewSemsSmsSendingTimeData {
+public class NewSemsSmsSendingTimeData extends AbsNewSemsData implements Serializable {
 	public final EnumMap<NewSemsSmsSender.Order, GregorianCalendar> smsSedingTimeEnumMap;
 
 	public static final NewSemsSmsSendingTimeData getInstance(String smsBody) {
@@ -38,5 +39,10 @@ public class NewSemsSmsSendingTimeData {
 				smsSedingTimeEnumMap.put(NewSemsSmsSender.Order.valueOf(i + 1), gregorianCalendar);
 			}
 		}
+	}
+
+	@Override
+	public String getDialogTitle() {
+		return "New Sems 문자발송 시간";
 	}
 }

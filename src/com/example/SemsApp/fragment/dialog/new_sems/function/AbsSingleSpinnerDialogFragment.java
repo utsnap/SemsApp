@@ -1,4 +1,4 @@
-package com.example.SemsApp.fragment.dialog.new_sems;
+package com.example.SemsApp.fragment.dialog.new_sems.function;
 
 import android.app.Activity;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.example.SemsApp.utility.NewSemsSmsSender;
 /**
  * Created by Administrator on 2014-04-07.
  */
-public abstract class AbsSingleSpinnerDialogFragment extends AbsDialogFragment {
+public abstract class AbsSingleSpinnerDialogFragment extends AbsFunctionDialogFragment {
 
 	protected Spinner machineNumberSpinner;
 

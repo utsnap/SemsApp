@@ -1,4 +1,4 @@
-package com.example.SemsApp.fragment.dialog.new_sems;
+package com.example.SemsApp.fragment.dialog.new_sems.function;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,7 +12,7 @@ import com.example.SemsApp.R;
 /**
  * Created by Administrator on 2014-04-07.
  */
-public abstract class AbsDialogFragment extends DialogFragment {
+public abstract class AbsFunctionDialogFragment extends DialogFragment {
 	public static final String EXTRA_NEW_SEMS_PHONE_NUMBER = "extra_new_sems_phone_number";
 
 	private LinearLayout fixedView;

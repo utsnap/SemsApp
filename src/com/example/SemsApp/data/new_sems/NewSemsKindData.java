@@ -3,12 +3,13 @@ package com.example.SemsApp.data.new_sems;
 
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 
 /**
  * Created by vaio-pc on 2014-04-13.
  */
-public class NewSemsKindData {
+public class NewSemsKindData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
 	public EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.SensorType> sensorTypeEnumMap;
 
@@ -31,5 +32,10 @@ public class NewSemsKindData {
 			sensorTypeEnumMap.put(NewSemsSmsSender.SensorNumber.valueOf(i), NewSemsSmsSender.SensorType.valueOf(sensorTypeNumber));
 		}
 		//완료
+	}
+
+	@Override
+	public String getDialogTitle() {
+		return "New Sems " + machineNumber.getDetailName() +  " 센서 종류";
 	}
 }

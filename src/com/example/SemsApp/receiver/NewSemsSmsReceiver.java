@@ -38,7 +38,6 @@ public class NewSemsSmsReceiver extends BroadcastReceiver {
 
 		String newSemsPhoneNumber = PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceKeys.NEW_SEMS_PHONE_NUMBER, "");
 
-		/*이 부분만 확인한다.*/
 		if ( intent.getAction().equals(ACTION_SMS_RECEIVED) ) {
 			//Log.i("utsnap", "문자 왔어요~~");
 			Bundle bundle = intent.getExtras();
@@ -72,11 +71,30 @@ public class NewSemsSmsReceiver extends BroadcastReceiver {
 					}
 					/*command type인 경우*/
 					if ( categoryOrType instanceof NewSemsSmsSender.CommandType ) {
+						//필수 : 메인 액티비티에 인텐트를 날려야 한다.
 						NewSemsSmsSender.CommandCategory commandCategory = (NewSemsSmsSender.CommandCategory) categoryOrType;
-						Intent sendingIntent = new Intent(MainActivity.ACTION_DATA_RECEIVED);
+						Intent sendingIntent = new Intent(context, MainActivity.class);
+						sendingIntent.setAction(MainActivity.ACTION_NEW_SEMS_DATA_RECEIVED);
 						sendingIntent.setType(MainActivity.TYPE_COMMAND_TYPE_DATA);
 						Object newSemsData = commandCategory.getNewSemsData(smsMessages[0].getMessageBody());
+						sendingIntent.putExtra(MainActivity.EXTRA_NEW_SEMS_DATA, (java.io.Serializable) newSemsData);
 						Class newSemsDataClass = commandCategory.getNewSemsDataClass();
+
+						PendingIntent pendingIntent;
+						if ( activityStack.size() == 0 ) {
+							sendingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							pendingIntent = PendingIntent.getActivity(context, 0, sendingIntent, PendingIntent.FLAG_ONE_SHOT);
+						}
+						else {
+							sendingIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+							pendingIntent = PendingIntent.getActivity(context, 0, sendingIntent, PendingIntent.FLAG_ONE_SHOT);
+						}
+						try {
+							pendingIntent.send();
+						} catch (PendingIntent.CanceledException e) {
+							e.printStackTrace();
+						}
+
 					}
 					/*command category인 경우*/
 					else {
@@ -87,29 +105,6 @@ public class NewSemsSmsReceiver extends BroadcastReceiver {
 					break;
 				}
 				//완료
-
-				smsMessages[i].getMessageBody();
-			}
-
-			Intent intent1 = new Intent(context, MainActivity.class);
-			intent1.setAction(MainActivity.ACTION_DATA_RECEIVED);
-			Gson gson = new Gson();
-			String machineTypeJson = gson.toJson(OLD_SEMS);
-			intent1.putExtra(MainActivity.EXTRA_MACHINE_TYPE_JSON, machineTypeJson);
-
-			PendingIntent pendingIntent;
-			if ( activityStack.size() == 0 ) {
-				intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
-			}
-			else {
-				intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-				pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
-			}
-			try {
-				pendingIntent.send();
-			} catch (PendingIntent.CanceledException e) {
-				e.printStackTrace();
 			}
 		}
 	}
