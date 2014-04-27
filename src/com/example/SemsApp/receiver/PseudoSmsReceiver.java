@@ -10,6 +10,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import com.example.SemsApp.activity.MainActivity;
 import com.example.SemsApp.application.SemsApplication;
+import com.example.SemsApp.data.AbsData;
 import com.example.SemsApp.data.OldSemsData;
 import com.example.SemsApp.preference.PreferenceKeys;
 import com.google.gson.Gson;
@@ -27,7 +28,6 @@ public class PseudoSmsReceiver extends BroadcastReceiver {
 	private static final long[] vibrationPattern = {500, 200, 500, 200, 500, 200};
 
 	private Stack<Activity> activityStack;
-
 	private SemsApplication semsApplication;
 
 	public static final String ACTION_PSEUDO_SMS_RECEIVED = "android.provider.Telephony.PSEUDO_SMS_RECEIVED";
@@ -54,13 +54,15 @@ public class PseudoSmsReceiver extends BroadcastReceiver {
 				int dataLabIndex = Integer.parseInt(sms.substring(1, 2)) - 1;
 				//Log.i("utsnap", String.valueOf(dataLabIndex));
 
+				String preferenceKey = ((AbsData)semsApplication.dataLabEnumMap.get(SemsApplication.MachineType.OLD_SEMS).get(dataLabIndex)).getPreferenceKey();
+
 				Intent sedingIntent = new Intent(context, MainActivity.class);
-				sedingIntent.setAction(MainActivity.ACTION_DATA_RECEIVED);
+				sedingIntent.setAction(MainActivity.ACTION_INFO_DATA_RECEIVED);
 				String machineTypeJson = GSON.toJson(SemsApplication.MachineType.OLD_SEMS);
 				sedingIntent.putExtra(MainActivity.EXTRA_MACHINE_TYPE_JSON, machineTypeJson);
 				sedingIntent.putExtra(MainActivity.EXTRA_DATA_LAB_INDEX, dataLabIndex);
 				sedingIntent.putExtra(MainActivity.EXTRA_DATA_CLASS, OldSemsData.class);
-				OldSemsData oldSemsData = OldSemsData.getInstance(Integer.parseInt(sms.substring(1, 2)), sms);
+				OldSemsData oldSemsData = OldSemsData.getInstance(preferenceKey, dataLabIndex, sms);
 				String dataJson = GSON.toJson(oldSemsData);
 				sedingIntent.putExtra(MainActivity.EXTRA_DATA_JSON, dataJson);
 

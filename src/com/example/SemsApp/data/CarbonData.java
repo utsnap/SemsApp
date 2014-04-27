@@ -1,5 +1,7 @@
 package com.example.SemsApp.data;
 
+import android.content.SharedPreferences;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -12,6 +14,10 @@ import java.util.HashMap;
  * 정태가 작업한다.
  */
 public class CarbonData extends AbsData implements Serializable {
+
+	public CarbonData(int index) {
+		super(index);
+	}
 
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
@@ -34,5 +40,10 @@ public class CarbonData extends AbsData implements Serializable {
 	@Override
 	protected void copyFrom(Object data) {
 		;
+	}
+
+	@Override
+	protected Object loadDefaultData(SharedPreferences preferences) {
+		return null;
 	}
 }

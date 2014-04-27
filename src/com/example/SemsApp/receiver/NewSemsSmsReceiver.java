@@ -97,8 +97,11 @@ public class NewSemsSmsReceiver extends BroadcastReceiver {
 
 					}
 					/*command category인 경우*/
-					else {
+					else if ( categoryOrType instanceof NewSemsSmsSender.CommandCategory ) {
 						;
+					}
+					else {
+						continue;
 					}
 				}
 				else {

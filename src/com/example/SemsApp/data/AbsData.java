@@ -12,15 +12,19 @@ import java.io.Serializable;
 public abstract class AbsData implements Comparable, DataManageable, Serializable {
 	protected static final Gson GSON = new Gson();
 	protected String preferenceKey;
-	public int order;
+	public final int index;
+
+	protected AbsData(int index) {
+		this.index = index;
+	}
 
 	@Override
 	public int compareTo(Object another) {
 		AbsData anotherData = (AbsData)another;
-		if ( this.order < anotherData.order ) {
+		if ( this.index < anotherData.index ) {
 			return -1;
 		}
-		else if ( this.order == anotherData.order ) {
+		else if ( this.index == anotherData.index ) {
 			return 0;
 		}
 		else {
@@ -30,6 +34,7 @@ public abstract class AbsData implements Comparable, DataManageable, Serializabl
 
 	@Override
 	public void saveToPreference(SharedPreferences preferences) {
+		Log.i("utsnap", preferences == null ? "null" : preferences.toString());
 		preferences.edit().putString(preferenceKey, GSON.toJson(getObject())).commit();
 	}
 
@@ -38,15 +43,28 @@ public abstract class AbsData implements Comparable, DataManageable, Serializabl
 	@Override
 	public void loadFromPreference(SharedPreferences preferences) {
 		String dataJson = preferences.getString(preferenceKey, "");
-		Log.i("utsnap", "dataJson : "  + dataJson);
+		//Log.i("utsnap", "dataJson : "  + dataJson);
 		if ( !dataJson.equals("") ) {
 			Object data = GSON.fromJson(dataJson, getDataClass());
 			this.copyFrom(data);
-			Log.i("utsnap", data.getClass().getSimpleName());
+			//Log.i("utsnap", data.getClass().getSimpleName());
 		}
+		else {
+			//Log.i("utsnap", "데이터가 비어있음");
+			Object data = loadDefaultData(preferences);
+			if ( data != null ) {
+				this.copyFrom(data);
+			}
+		}
+	}
+
+	public String getPreferenceKey() {
+		return preferenceKey;
 	}
 
 	protected abstract Class<?> getDataClass();
 
 	protected abstract void copyFrom(Object data);
+
+	protected abstract Object loadDefaultData(SharedPreferences preferences);
 }

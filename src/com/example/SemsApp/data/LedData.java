@@ -1,5 +1,7 @@
 package com.example.SemsApp.data;
 
+import android.content.SharedPreferences;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -10,6 +12,10 @@ import java.util.HashMap;
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
 public class LedData extends AbsData implements Serializable {
+	public LedData(int index) {
+		super(index);
+	}
+
 	/**
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
 	 * */
@@ -31,5 +37,10 @@ public class LedData extends AbsData implements Serializable {
 	@Override
 	protected void copyFrom(Object data) {
 		;
+	}
+
+	@Override
+	protected Object loadDefaultData(SharedPreferences preferences) {
+		return null;
 	}
 }

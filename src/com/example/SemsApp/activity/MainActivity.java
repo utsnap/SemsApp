@@ -20,7 +20,6 @@ import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 import com.google.gson.Gson;
 
-import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Stack;
 
@@ -34,8 +33,12 @@ import static com.example.SemsApp.application.SemsApplication.MachineType.OLD_SE
  */
 public class MainActivity extends Activity implements OldSemsFunctionDialogFragment.Callbacks {
 	public static final int REQUEST_APP_SETTING = 1;
-	public static final String ACTION_DATA_RECEIVED = "ACTION_DATA_RECEIVED";
+	public static final String ACTION_INFO_DATA_RECEIVED = "ACTION_INFO_DATA_RECEIVED";
+	public static final String ACTION_OLD_SEMS_DATA_RECEIVED = "ACTION_OLD_SEMS_DATA_RECEIVED";
 	public static final String ACTION_NEW_SEMS_DATA_RECEIVED = "ACTION_NEW_SEMS_DATA_RECEIVED";
+	public static final String ACTION_LED_DIMMER_DATA_RECEIVED = "ACTION_LED_DIMMER_DATA_RECEIVED";
+	public static final String ACTION_CARBON_HEATER_DATA_RECEIVED = "ACTION_CARBON_HEATER_DATA_RECEIVED";
+
 	public static final String ACTION_DATA_REQUESTED = "ACTION_DATA_REQUESTED";
 	public static final String TYPE_COMMAND_CATEGORY_DATA = "TYPE_COMMAND_CATEGORY_DATA";
 	public static final String TYPE_COMMAND_TYPE_DATA = "TYPE_COMMAND_TYPE_DATA";
@@ -87,6 +90,15 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("3번째"));
 		dataLabEnumMap.get(OLD_SEMS).add(OldSemsData.getInstance("4번째"));*/
 
+		//테스트 : old sems의 프리퍼런스에 저장된 데이터를 초기화한다.
+		/*SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putString(PreferenceKeys.FIRST_OLD_SEMS_DATA, "");
+		editor.putString(PreferenceKeys.SECOND_OLD_SEMS_DATA, "");
+		editor.putString(PreferenceKeys.THIRD_OLD_SEMS_DATA, "");
+		editor.putString(PreferenceKeys.FORTH_OLD_SEMS_DATA, "");
+		editor.commit();*/
+
 		//필수 : 액션바에 탭을 구성해야 한다.
 		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -100,6 +112,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 			ActionBar.Tab tab = actionBar.newTab()
 				.setText(machineType.getMachineName())
 				.setTag(machineType)
+				//.setCustomView(R.layout.tab_custom_view)
 				.setTabListener(new TabHandler(viewPagerFragment));
 			tabEnumMap.put(machineType, tab);
 		}
@@ -130,9 +143,10 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 		//필수 : 데이터를 받았는지 확인하고 적절한 처리를 한다.
 		Intent intent = getIntent();
-		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
+		if ( intent.getAction().equals(ACTION_INFO_DATA_RECEIVED) ) {
 			dataReceived(intent);
 		}
+		//완료
 
 		//필수 : 파일로 기계의 상태정보를 읽어서 메모리에 객체로 한다.
 		for ( MachineType machineType : MachineType.values() ) {
@@ -141,6 +155,19 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 			}
 		}
 		//완료
+
+		if ( intent.getAction().endsWith(ACTION_OLD_SEMS_DATA_RECEIVED) ) {
+			;
+		}
+		if ( intent.getAction().endsWith(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
+			;
+		}
+		if ( intent.getAction().endsWith(ACTION_LED_DIMMER_DATA_RECEIVED) ) {
+			;
+		}
+		if ( intent.getAction().endsWith(ACTION_CARBON_HEATER_DATA_RECEIVED) ) {
+			;
+		}
 	}
 
 	@Override
@@ -155,7 +182,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		//완료
 
 		//데이터를 받았을 경우에는 적당한 처리를 한다.
-		if ( intent.getAction().equals(ACTION_DATA_RECEIVED) ) {
+		if ( intent.getAction().equals(ACTION_INFO_DATA_RECEIVED) ) {
 			dataReceived(intent);
 		}
 		else if ( intent.getAction().equals(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
@@ -201,6 +228,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	@Override
 	protected void onStop() {
 		super.onStop();
+		//Log.i("utsnap", "각 기계 저장");
 		//필수 : 긱 기계의 상태정보를 파일에 저장한다.
 		for ( DataLab dataLab : dataLabEnumMap.values() ) {
 			dataLab.saveToFile(this);
@@ -311,11 +339,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
 		modifiedDataIndex = intent.getIntExtra(EXTRA_DATA_LAB_INDEX, -1);
 
-		//필수 : 받은 데이터의 탭을 활성화시킨다.
-		actionBar.setSelectedNavigationItem(modifiedMachine.index);
-		//완료
-
-		//필수 : 데이터를 메모리에 저장하고, 뷰페이저를 업데이트 한다.
+		//필수 : 받은 데이터를 저장한다.
 		dataLabEnumMap.get(modifiedMachine).set(modifiedDataIndex, GSON.fromJson(dataJson, dataClass));
 		//완료
 	}
@@ -325,6 +349,9 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	 * 데이터를 받았을때 사용한 변수들을 원래대로 초기화한다.
 	 * */
 	private void receivedDataProcessed() {
+		//필수 : 받은 데이터의 탭을 활성화시킨다.
+		actionBar.setSelectedNavigationItem(modifiedMachine.index);
+		//완료
 		dataLabChanged(modifiedMachine, modifiedDataIndex);
 		bModified = false;
 		modifiedMachine = null;

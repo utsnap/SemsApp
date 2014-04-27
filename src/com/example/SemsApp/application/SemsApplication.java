@@ -51,10 +51,10 @@ public class SemsApplication extends Application {
 
 			@Override
 			public void initialArrayList(DataLab<AbsData> arrayList) {
-				arrayList.add(new OldSemsData(PreferenceKeys.FIRST_OLD_SEMS_DATA, 0, ""));
-				arrayList.add(new OldSemsData(PreferenceKeys.SECOND_OLD_SEMS_DATA, 1, ""));
-				arrayList.add(new OldSemsData(PreferenceKeys.THIRD_OLD_SEMS_DATA, 2, ""));
-				arrayList.add(new OldSemsData(PreferenceKeys.FORTH_OLD_SEMS_DATA, 3, ""));
+				arrayList.add(OldSemsData.getInstance(PreferenceKeys.FIRST_OLD_SEMS_DATA, 0, ""));
+				arrayList.add(OldSemsData.getInstance(PreferenceKeys.SECOND_OLD_SEMS_DATA, 1, ""));
+				arrayList.add(OldSemsData.getInstance(PreferenceKeys.THIRD_OLD_SEMS_DATA, 2, ""));
+				arrayList.add(OldSemsData.getInstance(PreferenceKeys.FORTH_OLD_SEMS_DATA, 3, ""));
 			}
 
 			@Override

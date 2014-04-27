@@ -1,5 +1,6 @@
 package com.example.SemsApp.data;
 
+import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 /**
@@ -10,6 +11,9 @@ import com.google.gson.Gson;
  */
 public class OldSemsData extends AbsData {
 	private static final Gson GSON = new Gson();
+	private static final String[] DETAILS = {
+			"첫번째 비어있는 데이터", "두번째 비어있는 데이터", "세번째 비어있는 데이터", "네번째 비어있는 데이터"
+	};
 
 	public String detail;
 
@@ -17,19 +21,26 @@ public class OldSemsData extends AbsData {
 	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
 	 * 테스트용이다
 	 * */
-	public static OldSemsData getInstance(int order, String string) {
-		//필수 : 문자열처리 및 객체 생성
-		return new OldSemsData(order, string);
+	public static OldSemsData getDefaultInstance(int index) {
+		return new OldSemsData(index, DETAILS[index]);
 	}
 
-	private OldSemsData(int order, String detail) {
-		this.order = order;
+	public static OldSemsData getInstance(int index, String detail) {
+		return new OldSemsData(index, detail);
+	}
+
+	public static OldSemsData getInstance(String preferenceKey, int index, String detail) {
+		return new OldSemsData(preferenceKey, index, detail);
+	}
+
+	private OldSemsData(int index, String detail) {
+		super(index);
 		this.detail = detail;
 	}
 
-	public OldSemsData(String preferenceKey, int order, String detail) {
+	private OldSemsData(String preferenceKey, int index, String detail) {
+		super(index);
 		this.preferenceKey = preferenceKey;
-		this.order = order;
 		this.detail = detail;
 	}
 
@@ -46,6 +57,11 @@ public class OldSemsData extends AbsData {
 	@Override
 	protected void copyFrom(Object data) {
 		OldSemsData oldSemsData = (OldSemsData) data;
-		this.detail = oldSemsData.detail;
+		this.detail = new String(oldSemsData.detail);
+	}
+
+	@Override
+	protected Object loadDefaultData(SharedPreferences preferences) {
+		return OldSemsData.getDefaultInstance(index);
 	}
 }

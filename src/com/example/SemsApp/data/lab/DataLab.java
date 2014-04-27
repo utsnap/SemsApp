@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Created by Administrator on 14. 3. 20.
  */
 public class DataLab<E> extends ArrayList<E> {
+	protected static final Gson GSON = new Gson();
 	//protected ArrayList<E> dataList;
 	protected SemsApplication.MachineType machineType;
 
@@ -26,7 +27,6 @@ public class DataLab<E> extends ArrayList<E> {
 	 * 데이터 리스트를 파일에 저장한다.
 	 * */
 	public void saveToFile(Context context) {
-		Gson gson = new Gson();
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		for ( E e : this ) {
 			AbsData absData = (AbsData) e;

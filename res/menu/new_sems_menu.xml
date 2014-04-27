@@ -3,8 +3,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:id="@+id/newSemsSettingMenuItem"
 	      android:title="New Sems 설정"
-	      android:showAsAction="ifRoom|withText"/>
+	      android:showAsAction="collapseActionView"
+	      android:visible="false"/>
 	<item android:id="@+id/newSemsFunctionMenuItem"
 	      android:title="New Sems 기능"
-	      android:showAsAction="never"/>
+	      android:showAsAction="ifRoom|withText"/>
 </menu>

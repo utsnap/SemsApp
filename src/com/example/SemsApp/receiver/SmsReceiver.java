@@ -59,7 +59,7 @@ public class SmsReceiver extends BroadcastReceiver {
 			}
 
 			Intent intent1 = new Intent(context, MainActivity.class);
-			intent1.setAction(MainActivity.ACTION_DATA_RECEIVED);
+			intent1.setAction(MainActivity.ACTION_INFO_DATA_RECEIVED);
 			Gson gson = new Gson();
 			String machineTypeJson = gson.toJson(OLD_SEMS);
 			intent1.putExtra(MainActivity.EXTRA_MACHINE_TYPE_JSON, machineTypeJson);
