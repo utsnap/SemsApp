@@ -4,8 +4,6 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import com.example.SemsApp.data.new_sems.*;
 
-import java.io.FileInputStream;
-
 /**
  * Created by Administrator on 14. 3. 23.
  * 기계에 문자를 보내는 기능을 구현한다.
@@ -121,7 +119,7 @@ public final class NewSemsSmsSender {
 		INFO {
 			@Override
 			public Object getNewSemsData(String SmsBody) {
-				return null;
+				return NewSemsInfoData.getInstance(SmsBody);
 			}
 
 			@Override
@@ -150,11 +148,11 @@ public final class NewSemsSmsSender {
 		}
 
 		public static final CommandCategory findCommandCategory(String firstLine) {
-			if ( CommandType.findCommandType(firstLine) != null ) {
-				return GET;
+			if ( firstLine.contains("외부") ) {
+				return INFO;
 			}
 			else {
-				return INFO;
+				return null;
 			}
 		}
 
@@ -482,25 +480,44 @@ public final class NewSemsSmsSender {
 	}
 
 	public enum SensorType {
-		ETCETERA(0, "기타"),
-		TEMPERATURE(1, "온도"),
-		HUMIDITY(2, "습도"),
-		MINUS_NUMBER(3, "음수");
+		ETCETERA(0, "기타", "-"),
+		TEMPERATURE(1, "온도", "T"),
+		HUMIDITY(2, "습도", "H"),
+		MINUS_NUMBER(3, "음수", "W");
 
 		private final int number;
 		private final String summary;
+		private final String simbol;
 
-		SensorType(int number, String summary) {
+		SensorType(int number, String summary, String simbol) {
 			this.number = number;
 			this.summary = summary;
+			this.simbol = simbol;
 		}
 
 		public static final SensorType valueOf(int number) {
-			switch ( number ) {
-				case 0 : return ETCETERA;
-				case 1 : return TEMPERATURE;
-				case 2 : return HUMIDITY;
-				case 3 : return MINUS_NUMBER;
+			switch (number) {
+				case 0:
+					return ETCETERA;
+				case 1:
+					return TEMPERATURE;
+				case 2:
+					return HUMIDITY;
+				case 3:
+					return MINUS_NUMBER;
+			}
+			return null;
+		}
+
+		public static final SensorType valueOfSimbol(String simbol) {
+			if (simbol.equals("-")) {
+				return ETCETERA;
+			} else if (simbol.equals("T")) {
+				return TEMPERATURE;
+			} else if (simbol.equals("H")) {
+				return HUMIDITY;
+			} else if (simbol.equals("W")) {
+				return MINUS_NUMBER;
 			}
 			return null;
 		}
@@ -512,6 +529,10 @@ public final class NewSemsSmsSender {
 
 		public String getSummary() {
 			return summary;
+		}
+
+		public String getSimbol() {
+			return simbol;
 		}
 	}
 
@@ -538,6 +559,33 @@ public final class NewSemsSmsSender {
 		@Override
 		public String toString() {
 			return String.valueOf(number);
+		}
+
+		public String getSummary() {
+			return summary;
+		}
+	}
+
+	public enum Where {
+		INDOOR("내부"),
+		OUTDOOR("외부");
+
+		private final String summary;
+
+		Where(String summary) {
+			this.summary = summary;
+		}
+
+		public static final Where valueOfSummary(String summary) {
+			if ( summary.equals(INDOOR.getSummary()) ) {
+				return INDOOR;
+			}
+			else if ( summary.equals(OUTDOOR.getSummary()) ) {
+				return OUTDOOR;
+			}
+			else {
+				return null;
+			}
 		}
 
 		public String getSummary() {

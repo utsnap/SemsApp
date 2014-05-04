@@ -11,7 +11,7 @@ import java.util.EnumMap;
  */
 public class NewSemsKindData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
-	public EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.SensorType> sensorTypeEnumMap;
+	public final EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.SensorType> sensorTypeEnumMap;
 
 	public static final NewSemsKindData getInstance(String smsBody) {
 		return new NewSemsKindData(smsBody);

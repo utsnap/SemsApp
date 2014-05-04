@@ -11,7 +11,7 @@ import java.util.EnumMap;
  */
 public class NewSemsLimitData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
-	public EnumMap<NewSemsSmsSender.SensorNumber, EnumMap<LimitType, Integer>> limitDataEnumMap;
+	public final EnumMap<NewSemsSmsSender.SensorNumber, EnumMap<LimitType, Integer>> limitDataEnumMap;
 
 	public static final NewSemsLimitData getInstance(String smsBody) {
 		return new NewSemsLimitData(smsBody);

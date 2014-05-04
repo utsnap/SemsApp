@@ -11,7 +11,7 @@ import java.util.EnumMap;
  */
 public class NewSemsUseData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
-	public EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.Availability> sensorAvailabilityEnumMap;
+	public final EnumMap<NewSemsSmsSender.SensorNumber, NewSemsSmsSender.Availability> sensorAvailabilityEnumMap;
 
 	public static final NewSemsUseData getInstance(String smsBody) {
 		return new NewSemsUseData(smsBody);
