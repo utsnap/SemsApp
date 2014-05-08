@@ -28,22 +28,22 @@ public class CarbonData extends AbsData implements Serializable {
 	}
 
 	@Override
-	protected Object getObject() {
+	protected Object getSerializingObject() {
 		return this;
 	}
 
 	@Override
-	protected Class<?> getDataClass() {
+	protected Class<?> getSerializingDataClass() {
 		return CarbonData.class;
 	}
 
 	@Override
-	protected void copyFrom(Object data) {
+	protected void copyFrom(Object infoData) {
 		;
 	}
 
 	@Override
-	protected Object loadDefaultData(SharedPreferences preferences) {
+	protected Object loadDefaultInfoData(SharedPreferences preferences) {
 		return null;
 	}
 }

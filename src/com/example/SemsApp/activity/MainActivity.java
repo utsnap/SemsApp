@@ -9,13 +9,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import com.example.SemsApp.R;
 import com.example.SemsApp.activity.tab.TabHandler;
 import com.example.SemsApp.application.SemsApplication;
+import com.example.SemsApp.data.NewSemsData;
 import com.example.SemsApp.data.lab.DataLab;
+import com.example.SemsApp.data.new_sems.AbsNewSemsData;
+import com.example.SemsApp.data.new_sems.NewSemsBaseData;
+import com.example.SemsApp.data.new_sems.NewSemsInfoData;
 import com.example.SemsApp.fragment.dialog.OldSemsFunctionDialogFragment;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
@@ -144,8 +149,21 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 		//필수 : 데이터를 받았는지 확인하고 적절한 처리를 한다.
 		Intent intent = getIntent();
-		if ( intent.getAction().equals(ACTION_INFO_DATA_RECEIVED) ) {
-			dataReceived(intent);
+		if ( intent.getAction().endsWith(ACTION_OLD_SEMS_DATA_RECEIVED) ) {
+			;
+		}
+		else if ( intent.getAction().endsWith(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
+			//Log.i("utsnap", "new");
+			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
+			Class<?> dataClass = (Class<?>) intent.getSerializableExtra(EXTRA_DATA_CLASS);
+			AbsNewSemsData absNewSemsData = (AbsNewSemsData) GSON.fromJson(dataJson, dataClass);
+			newSemsDataReceived(absNewSemsData);
+		}
+		else if ( intent.getAction().endsWith(ACTION_LED_DIMMER_DATA_RECEIVED) ) {
+			;
+		}
+		else if ( intent.getAction().endsWith(ACTION_CARBON_HEATER_DATA_RECEIVED) ) {
+			;
 		}
 		//완료
 
@@ -156,23 +174,11 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 			}
 		}
 		//완료
-
-		if ( intent.getAction().endsWith(ACTION_OLD_SEMS_DATA_RECEIVED) ) {
-			;
-		}
-		if ( intent.getAction().endsWith(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
-			;
-		}
-		if ( intent.getAction().endsWith(ACTION_LED_DIMMER_DATA_RECEIVED) ) {
-			;
-		}
-		if ( intent.getAction().endsWith(ACTION_CARBON_HEATER_DATA_RECEIVED) ) {
-			;
-		}
 	}
 
 	@Override
 	protected void onNewIntent(Intent intent) {
+		Log.i("utsnap", "onNewIntent");
 		//필수 : 화면을 활성화시킨다.
 		getWindow().addFlags(
 			WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
@@ -182,19 +188,29 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		);
 		//완료
 
-		//데이터를 받았을 경우에는 적당한 처리를 한다.
-		if ( intent.getAction().equals(ACTION_INFO_DATA_RECEIVED) ) {
-			dataReceived(intent);
+		//필수 : 데이터를 받았는지 확인하고 적절한 처리를 한다.
+		if ( intent.getAction().endsWith(ACTION_OLD_SEMS_DATA_RECEIVED) ) {
+			;
 		}
-		else if ( intent.getAction().equals(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
-			// 필수 : new sems의 GET, SET 요청에대한 응답을 한다.
-			// 단순한 다이얼로그를 띄워야 한다.
+		else if ( intent.getAction().endsWith(ACTION_NEW_SEMS_DATA_RECEIVED) ) {
+			//Log.i("utsnap", "new");
+			String dataJson = intent.getStringExtra(EXTRA_DATA_JSON);
+			Class<?> dataClass = (Class<?>) intent.getSerializableExtra(EXTRA_DATA_CLASS);
+			AbsNewSemsData absNewSemsData = (AbsNewSemsData) GSON.fromJson(dataJson, dataClass);
+			newSemsDataReceived(absNewSemsData);
 		}
+		else if ( intent.getAction().endsWith(ACTION_LED_DIMMER_DATA_RECEIVED) ) {
+			;
+		}
+		else if ( intent.getAction().endsWith(ACTION_CARBON_HEATER_DATA_RECEIVED) ) {
+			;
+		}
+		//완료
 	}
 
 	@Override
 	protected void onRestart() {
-		super.onRestart();//Log.i("utsnap", "onRestart");
+		super.onRestart();Log.i("utsnap", "onRestart");
 		//필수 : SemsApplication에서 공통으로 사용되는 데이터 객체를 받아온다.
 		for ( MachineType machineType : MachineType.values() ) {
 			if ( !machineType.equals(modifiedMachine) ) {
@@ -207,6 +223,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 	@Override
 	protected void onStart() {
+		Log.i("utsnap", "onStart");
 		super.onStart();
 		if ( bModified ) {
 			receivedDataProcessed();
@@ -215,6 +232,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 
 	@Override
 	protected void onResume() {
+		Log.i("utsnap", "onResume");
 		super.onResume();
 		if ( bModified ) {
 			receivedDataProcessed();
@@ -321,6 +339,7 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 	}
 
 	public void dataLabChanged(MachineType machineType, int selectedIndex) {
+		//Log.i("utsnap", machineType.getMachineName() + " , " + selectedIndex);
 		viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter().notifyDataSetChanged();
 		viewPagerFragmentEnumMap.get(machineType).getViewPager().setAdapter(viewPagerFragmentEnumMap.get(machineType).getViewPager().getAdapter());
 		viewPagerFragmentEnumMap.get(machineType).getViewPager().setCurrentItem(selectedIndex, true);
@@ -358,6 +377,22 @@ public class MainActivity extends Activity implements OldSemsFunctionDialogFragm
 		modifiedMachine = null;
 		modifiedDataIndex = -1;
 		addedData = null;
+	}
+
+	/**
+	 * new sems data를 받았을때 하는 작업.
+	 * */
+	private void newSemsDataReceived(AbsNewSemsData absNewSemsData) {
+		if ( absNewSemsData instanceof NewSemsInfoData ) {
+			NewSemsInfoData newSemsInfoData = (NewSemsInfoData) absNewSemsData;
+			bModified = true;
+			modifiedMachine = MachineType.NEW_SEMS;
+			modifiedDataIndex = newSemsInfoData.machineNumber.getInteger() - 1;
+			((NewSemsData)dataLabEnumMap.get(modifiedMachine).get(modifiedDataIndex)).newSemsInfoData = newSemsInfoData;
+		}
+		else {
+			;
+		}
 	}
 
 	private class PreferenceChangeHandler implements SharedPreferences.OnSharedPreferenceChangeListener {

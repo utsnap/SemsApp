@@ -10,7 +10,6 @@ import com.google.gson.Gson;
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
 public class OldSemsData extends AbsData {
-	private static final Gson GSON = new Gson();
 	private static final String[] DETAILS = {
 			"첫번째 비어있는 데이터", "두번째 비어있는 데이터", "세번째 비어있는 데이터", "네번째 비어있는 데이터"
 	};
@@ -45,23 +44,23 @@ public class OldSemsData extends AbsData {
 	}
 
 	@Override
-	protected Object getObject() {
+	protected Object getSerializingObject() {
 		return this;
 	}
 
 	@Override
-	protected Class<?> getDataClass() {
+	protected Class<?> getSerializingDataClass() {
 		return OldSemsData.class;
 	}
 
 	@Override
-	protected void copyFrom(Object data) {
-		OldSemsData oldSemsData = (OldSemsData) data;
+	protected void copyFrom(Object infoData) {
+		OldSemsData oldSemsData = (OldSemsData) infoData;
 		this.detail = new String(oldSemsData.detail);
 	}
 
 	@Override
-	protected Object loadDefaultData(SharedPreferences preferences) {
+	protected Object loadDefaultInfoData(SharedPreferences preferences) {
 		return OldSemsData.getDefaultInstance(index);
 	}
 }

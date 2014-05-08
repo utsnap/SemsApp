@@ -15,7 +15,7 @@ public final class NewSemsSmsSender {
 		String phoneNumber,
 		CommandCategory category) {
 
-		String smsText = category.toString();
+		String smsText = category.getCommandString();
 		Log.i("utsnap", smsText);
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, smsText, null, null);
 	}
@@ -27,7 +27,11 @@ public final class NewSemsSmsSender {
 		String value) {
 
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(order).append(":").append(value);
+		stringBuilder.append(category.getCommandString())
+				.append(" ")
+				.append(order.getCommandString())
+				.append(":")
+				.append(value);
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -39,7 +43,11 @@ public final class NewSemsSmsSender {
 		String value) {
 
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(type).append(":").append(value);
+		stringBuilder.append(category.getCommandString()).
+				append(" ").
+				append(type.getCommandString()).
+				append(":").
+				append(value);
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -53,7 +61,14 @@ public final class NewSemsSmsSender {
 		String value) {
 
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(type).append(machineNumber).append("-").append(sensorNumber).append(":").append(value);
+		stringBuilder.append(category.getCommandString())
+				.append(" ")
+				.append(type.getCommandString())
+				.append(machineNumber.getCommandString())
+				.append("-")
+				.append(sensorNumber.getCommandString())
+				.append(":")
+				.append(value);
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -64,7 +79,9 @@ public final class NewSemsSmsSender {
 		CommandType type) {
 
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(type);
+		stringBuilder.append(category.getCommandString())
+				.append(" ")
+				.append(type.getCommandString());
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -76,7 +93,10 @@ public final class NewSemsSmsSender {
 		MachineNumber machineNumber) {
 
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(type).append(machineNumber);
+		stringBuilder.append(category.getCommandString())
+				.append(" ")
+				.append(type.getCommandString())
+				.append(machineNumber.getCommandString());
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -88,7 +108,12 @@ public final class NewSemsSmsSender {
 		Order order,
 		String value) {
 		StringBuilder stringBuilder = new StringBuilder("");
-		stringBuilder.append(category).append(" ").append(type).append(order).append(":").append(value);
+		stringBuilder.append(category.getCommandString())
+				.append(" ")
+				.append(type.getCommandString())
+				.append(order.getCommandString())
+				.append(":")
+				.append(value);
 		Log.i("utsnap", stringBuilder.toString());
 		SMS_MANAGER.sendTextMessage(phoneNumber, null, stringBuilder.toString(), null, null);
 	}
@@ -166,6 +191,10 @@ public final class NewSemsSmsSender {
 					return "현재상태";
 			}
 			return "뭐지";
+		}
+
+		public String getCommandString() {
+			return super.toString();
 		}
 	}
 
@@ -326,9 +355,7 @@ public final class NewSemsSmsSender {
 			return "뭐지";
 		}
 
-
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			if ( this == EMPTY ) {
 				return "";
 			}
@@ -364,16 +391,15 @@ public final class NewSemsSmsSender {
 		}
 
 		public int getInteger() {
-			return Integer.parseInt(this.toString());
+			return Integer.parseInt(this.getCommandString());
 		}
 
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			return super.toString().replace("_", "");
 		}
 
 		public String getDetailName() {
-			return toString().concat("번 장비");
+			return getCommandString().concat("번 장비");
 		}
 	}
 
@@ -419,16 +445,15 @@ public final class NewSemsSmsSender {
 		}
 
 		public int getInteger() {
-			return Integer.parseInt(this.toString());
+			return Integer.parseInt(this.getCommandString());
 		}
 
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			return super.toString().replace("_", "");
 		}
 
 		public String getDetailName() {
-			return toString().concat("번 센서");
+			return getCommandString().concat("번 센서");
 		}
 	}
 
@@ -461,21 +486,20 @@ public final class NewSemsSmsSender {
 			return order;
 		}
 
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			return super.toString().replace("_", "");
 		}
 
 		public int getInteger() {
-			return Integer.parseInt(this.toString());
+			return Integer.parseInt(this.getCommandString());
 		}
 
 		public String getEmergencyContact() {
-			return toString().concat(" 번째 비상연락처");
+			return getCommandString().concat(" 번째 비상연락처");
 		}
 
 		public String getSmsSendingTime() {
-			return toString().concat(" 번쩨 발송시간");
+			return getCommandString().concat(" 번쩨 발송시간");
 		}
 	}
 
@@ -483,7 +507,7 @@ public final class NewSemsSmsSender {
 		ETCETERA(0, "기타", "-"),
 		TEMPERATURE(1, "온도", "T"),
 		HUMIDITY(2, "습도", "H"),
-		MINUS_NUMBER(3, "음수", "W");
+		WATER(3, "음수", "W");
 
 		private final int number;
 		private final String summary;
@@ -504,7 +528,7 @@ public final class NewSemsSmsSender {
 				case 2:
 					return HUMIDITY;
 				case 3:
-					return MINUS_NUMBER;
+					return WATER;
 			}
 			return null;
 		}
@@ -517,13 +541,12 @@ public final class NewSemsSmsSender {
 			} else if (simbol.equals("H")) {
 				return HUMIDITY;
 			} else if (simbol.equals("W")) {
-				return MINUS_NUMBER;
+				return WATER;
 			}
 			return null;
 		}
 
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			return String.valueOf(number);
 		}
 
@@ -556,8 +579,7 @@ public final class NewSemsSmsSender {
 			this.summary = summary;
 		}
 
-		@Override
-		public String toString() {
+		public String getCommandString() {
 			return String.valueOf(number);
 		}
 

@@ -34,24 +34,22 @@ public abstract class AbsData implements Comparable, DataManageable, Serializabl
 
 	@Override
 	public void saveToPreference(SharedPreferences preferences) {
-		Log.i("utsnap", preferences == null ? "null" : preferences.toString());
-		preferences.edit().putString(preferenceKey, GSON.toJson(getObject())).commit();
+		//Log.i("utsnap", preferences == null ? "null" : preferences.toString());
+		preferences.edit().putString(preferenceKey, GSON.toJson(getSerializingObject())).commit();
 	}
-
-	protected abstract Object getObject();
 
 	@Override
 	public void loadFromPreference(SharedPreferences preferences) {
 		String dataJson = preferences.getString(preferenceKey, "");
 		//Log.i("utsnap", "dataJson : "  + dataJson);
 		if ( !dataJson.equals("") ) {
-			Object data = GSON.fromJson(dataJson, getDataClass());
+			Object data = GSON.fromJson(dataJson, getSerializingDataClass());
 			this.copyFrom(data);
 			//Log.i("utsnap", data.getClass().getSimpleName());
 		}
 		else {
 			//Log.i("utsnap", "데이터가 비어있음");
-			Object data = loadDefaultData(preferences);
+			Object data = loadDefaultInfoData(preferences);
 			if ( data != null ) {
 				this.copyFrom(data);
 			}
@@ -62,9 +60,11 @@ public abstract class AbsData implements Comparable, DataManageable, Serializabl
 		return preferenceKey;
 	}
 
-	protected abstract Class<?> getDataClass();
+	protected abstract Object getSerializingObject();
 
-	protected abstract void copyFrom(Object data);
+	protected abstract Class<?> getSerializingDataClass();
 
-	protected abstract Object loadDefaultData(SharedPreferences preferences);
+	protected abstract void copyFrom(Object infoData);
+
+	protected abstract Object loadDefaultInfoData(SharedPreferences preferences);
 }

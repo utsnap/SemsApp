@@ -1,6 +1,8 @@
 package com.example.SemsApp.data;
 
 import android.content.SharedPreferences;
+import com.example.SemsApp.data.new_sems.NewSemsInfoData;
+import com.example.SemsApp.data.new_sems.NewSemsKindData;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -12,35 +14,37 @@ import java.util.HashMap;
  * 선택 : 빌더 패턴을 사용할 것을 추천.
  */
 public class NewSemsData extends AbsData implements Serializable {
-	public NewSemsData(int index) {
+	public NewSemsInfoData newSemsInfoData;
+
+	public static NewSemsData getInstance(String prefernenceKey, int index, NewSemsInfoData newSemsInfoData) {
+		return new NewSemsData(prefernenceKey, index, newSemsInfoData);
+	}
+
+	private NewSemsData(String prefernenceKey, int index, NewSemsInfoData newSemsInfoData) {
 		super(index);
-	}
-
-	/**
-	 * 문자메세지에서 얻어온 문자열을 분석하여 객체로 반환한다.
-	 * */
-	public static NewSemsData getInstance(HashMap<Integer, ?> tokenHashMap) {
-		//필수 : 맵에서 정보를 읽어서 객체 생성
-		return null;
+		this.preferenceKey = prefernenceKey;
+		this.newSemsInfoData = newSemsInfoData;
 	}
 
 	@Override
-	protected Object getObject() {
-		return this;
+	protected Object getSerializingObject() {
+		return newSemsInfoData;
 	}
 
 	@Override
-	protected Class<?> getDataClass() {
-		return NewSemsData.class;
+	protected Class<?> getSerializingDataClass() {
+		return NewSemsInfoData.class;
 	}
 
 	@Override
-	protected void copyFrom(Object data) {
-		;
+	protected void copyFrom(Object infoData) {
+		if ( infoData instanceof NewSemsInfoData ) {
+			newSemsInfoData = (NewSemsInfoData) infoData;
+		}
 	}
 
 	@Override
-	protected Object loadDefaultData(SharedPreferences preferences) {
-		return null;
+	protected Object loadDefaultInfoData(SharedPreferences preferences) {
+		return NewSemsInfoData.getDefaultInstance(index);
 	}
 }

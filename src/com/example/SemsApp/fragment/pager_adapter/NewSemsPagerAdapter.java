@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import com.example.SemsApp.data.NewSemsData;
 import com.example.SemsApp.data.lab.DataLab;
+import com.example.SemsApp.fragment.machine_state.NewSemsStateFragment;
 
 /**
  * Created by Administrator on 14. 3. 20.
@@ -16,6 +17,6 @@ public class NewSemsPagerAdapter extends AbsDataPagerAdapter<NewSemsData> {
 
 	@Override
 	public Fragment getItem(int i) {
-		return null;
+		return NewSemsStateFragment.newInstance(dataLab.get(i));
 	}
 }

@@ -1,17 +1,17 @@
 package com.example.SemsApp.data.new_sems;
 
-
 import com.example.SemsApp.utility.NewSemsSmsSender;
 
 import java.io.Serializable;
 import java.util.EnumMap;
+import java.util.Map;
 
 /**
  * Created by vaio-pc on 2014-04-13.
  */
 public class NewSemsLimitData extends AbsNewSemsData implements Serializable {
 	public final NewSemsSmsSender.MachineNumber machineNumber;
-	public final EnumMap<NewSemsSmsSender.SensorNumber, EnumMap<LimitType, Integer>> limitDataEnumMap;
+	public final Map<NewSemsSmsSender.SensorNumber, EnumMap<LimitType, Integer>> limitDataEnumMap;
 
 	public static final NewSemsLimitData getInstance(String smsBody) {
 		return new NewSemsLimitData(smsBody);

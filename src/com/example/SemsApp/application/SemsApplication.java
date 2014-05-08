@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.Application;
 import com.example.SemsApp.data.*;
 import com.example.SemsApp.data.lab.DataLab;
+import com.example.SemsApp.data.new_sems.NewSemsInfoData;
 import com.example.SemsApp.fragment.viewpager.*;
 import com.example.SemsApp.preference.PreferenceKeys;
 
 import java.util.EnumMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -77,6 +79,10 @@ public class SemsApplication extends Application {
 
 			@Override
 			public void initialArrayList(DataLab<AbsData> arrayList) {
+				arrayList.add(NewSemsData.getInstance(PreferenceKeys.FIRST_NEW_SEMS_DATA, 0, NewSemsInfoData.getDefaultInstance(0)));
+				arrayList.add(NewSemsData.getInstance(PreferenceKeys.SECOND_NEW_SEMS_DATA, 1, NewSemsInfoData.getDefaultInstance(1)));
+				arrayList.add(NewSemsData.getInstance(PreferenceKeys.THIRD_NEW_SEMS_DATA, 2, NewSemsInfoData.getDefaultInstance(2)));
+				arrayList.add(NewSemsData.getInstance(PreferenceKeys.FORTH_NEW_SEMS_DATA, 3, NewSemsInfoData.getDefaultInstance(3)));
 
 			}
 
@@ -98,7 +104,7 @@ public class SemsApplication extends Application {
 
 			@Override
 			public void initialArrayList(DataLab<AbsData> arrayList) {
-
+				;
 			}
 
 			@Override
@@ -121,7 +127,7 @@ public class SemsApplication extends Application {
 
 			@Override
 			public void initialArrayList(DataLab<AbsData> arrayList) {
-
+				;
 			}
 
 			@Override
